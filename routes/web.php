@@ -6,6 +6,7 @@ use App\Http\Controllers\Dokter\DokterController;
 use App\Http\Controllers\Obat\ObatController;
 use App\Http\Controllers\Pasien\PasienController;
 use App\Http\Controllers\Perjanjian\PerjanjianController;
+use App\Http\Controllers\Pengumuman\PengumumanController;
 use App\Http\Controllers\LandingpageController;
 use App\Models\Obat;
 use Illuminate\Support\Facades\Auth;
@@ -35,3 +36,5 @@ Route::resource('admin', AdminController::class)->middleware('checkRole:admin');
 Route::resource('perjanjian', PerjanjianController::class)->middleware('checkRole:pasien,admin');
 Route::resource('obat', ObatController::class)->middleware('checkRole:dokter,admin');
 Route::resource('admin-dokter', AdminDokterController::class)->middleware('checkRole:admin');
+Route::resource('pengumuman', PengumumanController::class)->middleware('checkRole:admin');
+
