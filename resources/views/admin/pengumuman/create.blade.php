@@ -63,9 +63,9 @@
             </textarea>
           </div>
           <div class="form-group">
-            <label for="created_at">Tanggal</label>
-            <input type="Date" id="created_at" class="form-control"
-              id="created_at" name="created_at" placeholder="Tanggal" value="{{ old('created_at') }}">
+            <label for="tanggal">Tanggal</label>
+            <input type="Date" id="tanggal" class="form-control"
+              id="tanggal" name="tanggal" placeholder="Tanggal" value="{{ old('tanggal') }}">
           </div>
           <div class="form-group">
             <label for="gambar">Gambar</label>

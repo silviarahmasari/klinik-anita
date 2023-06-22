@@ -14,6 +14,7 @@ class Pengumuman extends Model
         'judul_pengumuman',
         'deskripsi',
         'gambar',
+        'tanggal',
         'created_at',
         'updated_at',
     ];

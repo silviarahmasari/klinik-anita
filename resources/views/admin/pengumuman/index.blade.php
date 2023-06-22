@@ -75,7 +75,7 @@
                 <td><img src="{{ asset('/storage/gambar-pengumuman/' . $data->gambar) }}" height="50"></td>
                 <td>{{ $data->judul_pengumuman }}</td>
                 <td>{{ $data->deskripsi }}</td>
-                <td>{{ $data->created_at }}</td>
+                <td>{{ $data->tanggal }}</td>
                 <td>
                   <span><a href="{{ route('pengumuman.show', $data->id) }}" class="btn btn-primary">detail</a></span>
                   <span><a href="{{ route('pengumuman.edit', $data->id) }}" class="btn btn-warning">Edit</a></span>

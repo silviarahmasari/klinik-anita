@@ -44,7 +44,7 @@ class PengumumanController extends Controller
         $validatedData = $request->validate([
             'judul_pengumuman' => 'required',
             'deskripsi' => 'required',
-            'created_at' => 'required',
+            'tanggal' => 'required',
             'gambar' => 'required|image'
         ]);
 
@@ -112,7 +112,7 @@ class PengumumanController extends Controller
         }
         $pengumuman -> judul_pengumuman = $request -> judul_pengumuman;
         $pengumuman -> deskripsi = $request -> deskripsi;
-        $pengumuman -> created_at = $request -> created_at;
+        $pengumuman -> tanggal = $request -> tanggal;
         $pengumuman -> save();
 
         return redirect()->route('pengumuman.index');

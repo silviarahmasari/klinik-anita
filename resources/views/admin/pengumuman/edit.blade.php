@@ -53,9 +53,9 @@
             <textarea type="text" class="form-control" id="deskripsi" name="deskripsi" placeholder="deskripsi">{{ $pengumuman->deskripsi }}</textarea>
           </div>
           <div class="form-group">
-            <label for="created_at">Tanggal</label>
-            <input type="date" class="form-control" id="created_at" name="created_at" placeholder="Tanggal"
-              value="{{ $pengumuman->created_at }}">
+            <label for="tanggal">Tanggal</label>
+            <input type="date" class="form-control" id="tanggal" name="tanggal" placeholder="Tanggal"
+              value="{{ $pengumuman->tanggal }}">
           </div>
           <div class="form-group">
             <label for="gambar">Gambar</label>
