@@ -69,7 +69,7 @@ class PengumumanController extends Controller
     {
         $pengumuman = Pengumuman::find($id);
         $pengumuman->get();
-        return view('admin.pengumuman.edit', compact('pengumuman'));
+        return view('admin.pengumuman.show', compact('pengumuman'));
     }
 
     /**

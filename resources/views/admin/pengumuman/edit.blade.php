@@ -36,9 +36,12 @@
   <!-- Begin Page Content -->
   <div class="container-fluid">
     <!-- Page Heading -->
-    <h1 class="h3 mb-3 text-gray-800">{{ $pengumuman->nama_obat }}</h1>
+    <h1 class="h3 mb-3 font-weight-bold text-gray-800">Edit Pengumuman {{ $pengumuman->judul_pengumuman }}</h1>
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
+      <div class="card-header py-3">
+        <h5 class="font-weight-bold text-primary">Pengumuman</h5>
+      </div>
       <div class="card-body">
         <form method="POST" action="{{ route('pengumuman.update', $pengumuman->id) }}" enctype="multipart/form-data">
           @method('put')
