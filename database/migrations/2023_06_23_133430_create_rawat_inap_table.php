@@ -1,0 +1,38 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class CreateRawatInapTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('rawat_inap', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->bigInteger('id_kamar')->unsigned();
+            $table->string('no_rm');
+            $table->string('nama_pasien');
+            $table->date('check_in');
+            $table->date('check_out');
+            $table->enum('status_pembayaran', ['selesai terbayar', 'belum terbayar'])->default('belum terbayar');
+            $table->timestamps();
+            $table->foreign('id_kamar')->references('id')->on('kamar')->onDelete('cascade');
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('rawat_inap');
+    }
+}
