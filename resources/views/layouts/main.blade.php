@@ -59,7 +59,7 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Action</h6>
             <a class="collapse-item" href="{{ route('dokter.index') }}">Daftar Pasien</a>
-            
+
           </div>
         </div>
       </li>
@@ -108,6 +108,7 @@
             <h6 class="collapse-header">Action</h6>
             <a class="collapse-item" href="{{ route('admin.index') }}">Daftar User</a>
             <a class="collapse-item" href="{{ route('admin-dokter.index') }}">Daftar Dokter</a>
+            <a class="collapse-item" href="{{ route('admin-pasien.index') }}">Daftar Pasien</a>
           </div>
         </div>
       </li>
@@ -120,8 +121,8 @@
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Action</h6>
-            
-            <a class="collapse-item" href="{{ route('rawatinap.index') }}">Rawat Inap</a> 
+            <a class="collapse-item" href="{{ route('kunjungan-admin.index') }}">Daftar Kunjungan</a>
+            <a class="collapse-item" href="{{ route('rawatinap.index') }}">Daftar Rawat Inap</a>
           </div>
         </div>
       </li>
@@ -135,7 +136,7 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Actions</h6>
             <a class="collapse-item" href="{{ route('obat.index') }}">Daftar Obat</a>
-            
+
           </div>
         </div>
       </li>
@@ -149,7 +150,7 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Actions</h6>
             <a class="collapse-item" href="{{ route('pengumuman.index') }}"> Data Pengumuman</a>
-            
+
           </div>
         </div>
       </li>

@@ -42,7 +42,7 @@
     <div class="card shadow mb-4">
       <div class="card-header py-3">
         <h5 class="font-weight-bold text-primary">Daftar User
-          <a href="{{ route('admin-pasien.create') }}" class="btn btn-primary font-weight-bold">
+          <a href="{{ route('admin.create') }}" class="btn btn-primary font-weight-bold">
             + Tambah User
           </a>
         </h5>
@@ -52,48 +52,34 @@
           <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
             <thead>
               <tr>
-                <th>No. RM</th>
-                <th>Nama Lengkap</th>
-                <th>NIK KTP</th>
-                <th>Tempat, Tanggal Lahir</th>
-                <th>Jenis Kelamin</th>
-                <th>Alamat Lengkap</th>
+                <th>Nama User</th>
+                <th>Email User</th>
+                <th>Role User</th>
                 <th>Actions</th>
               </tr>
             </thead>
             <tfoot>
               <tr>
-                <th>No. RM</th>
-                <th>Nama Lengkap</th>
-                <th>NIK KTP</th>
-                <th>Tempat, Tanggal Lahir</th>
-                <th>Jenis Kelamin</th>
-                <th>Alamat Lengkap</th>
+                <th>Nama User</th>
+                <th>Email User</th>
+                <th>Role User</th>
                 <th>Actions</th>
               </tr>
             </tfoot>
             <tbody>
-              @foreach ($pasien as $item)
+              @foreach ($users as $user)
               <tr>
-                <td>{{ $item->no_rm }}</td>
-                <td>{{ $item->nama_pasien }}</td>
-                <td>{{ $item->nik }}</td>
-                <td>{{ $item->dob }}</td>
-                <td>{{ $item->gender }}</td>
-                <td>{{ $item->alamat_pasien }}</td>
+                <td>{{ $user->name }}</td>
+                <td>{{ $user->email }}</td>
+                <td>{{ $user->role }}</td>
                 <td>
-                    {{-- <span>
-                        <a href="{{ route('admin-pasien.detail', $item->id) }}" class="btn btn-success">
-                          Detail
-                        </a>
-                    </span> --}}
-                    <span><a href="{{ route('admin-pasien.edit', $item->id) }}" class="btn btn-warning">Edit</a></span>
-                    <form action="{{ route('admin-pasien.destroy', $item->id) }}" method="post">
-                        @method('delete')
-                        @csrf
-                        <span><button onclick="return confirm('Are you sure?')" class="btn btn-danger d-block"
-                            type="submit">Hapus</button></span>
-                    </form>
+                  <span><a href="{{ route('admin.edit', $user->id) }}" class="btn btn-warning">Edit</a></span>
+                  <form action="{{ route('admin.destroy', $user->id) }}" method="post">
+                    @method('delete')
+                    @csrf
+                    <span><button onclick="return confirm('Are you sure?')" class="btn btn-danger d-block"
+                        type="submit">Hapus</button></span>
+                  </form>
                 </td>
               </tr>
               @endforeach

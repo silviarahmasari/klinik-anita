@@ -20,7 +20,7 @@ class AdminController extends Controller
     $data = [
       'users' => $user
     ];
-    return view('admin.pasien.index', $data);
+    return view('admin.user.index', $data);
   }
 
   /**
@@ -30,7 +30,7 @@ class AdminController extends Controller
    */
   public function create()
   {
-    return view('admin.pasien.create');
+    return view('admin.user.create');
   }
 
   /**
@@ -71,7 +71,7 @@ class AdminController extends Controller
     $data = [
       'user' => $users
     ];
-    return view('admin.pasien.edit', $data);
+    return view('admin.user.edit', $data);
   }
 
   /**
