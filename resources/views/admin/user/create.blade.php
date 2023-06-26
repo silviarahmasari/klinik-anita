@@ -6,15 +6,10 @@
 
   <!-- Topbar -->
   <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-
     <!-- Sidebar Toggle (Topbar) -->
-    <form class="form-inline">
-      <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-        <i class="fa fa-bars"></i>
-      </button>
-    </form>
-
-
+    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+      <i class="fa fa-bars"></i>
+    </button>
     <!-- Topbar Navbar -->
     <ul class="navbar-nav ml-auto">
       <div class="topbar-divider d-none d-sm-block"></div>
@@ -37,57 +32,51 @@
           </form>
         </div>
       </li>
-
     </ul>
-
   </nav>
   <!-- End of Topbar -->
 
   <!-- Begin Page Content -->
   <div class="container-fluid">
+
     <!-- Page Heading -->
-    <h1 class="h3 mb-3 text-gray-800">Dokter</h1>
-    <p>Edit biodata dokter</p>
+    <h1 class="h3 mb-3 text-gray-800 font-weight-bold">Tambah User</h1>
+
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
+      <div class="card-header py-3">
+        <h5 class="font-weight-bold text-primary">Masukan User
+        </h5>
+      </div>
       <div class="card-body">
-        <form method="POST" action="{{ route('admin-dokter.update', $dokter->id) }}" enctype="multipart/form-data">
-          @method('put')
+        <form method="POST" action="{{ route('admin.store') }}" enctype="multipart/form-data">
           @csrf
-          {{-- <input type="hidden" name="{{ $users->id }}" value="{{ $users->id }}"> --}}
           <div class="form-group">
-            <label for="nama_dokter">Nama Dokter</label>
-            <input type="text" class="form-control" id="nama_dokter" name="nama_dokter" placeholder="Nama Dokter"
-              value="{{ $dokter->nama_dokter }}">
+            <label for="name">Nama User</label>
+            <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name"
+              placeholder="Nama User" value="{{ old('name') }}">
+            @error('name')
+            <span class="invalid-feedback" role="alert">
+              <strong>{{ $message }}</strong>
+            </span>
+            @enderror
           </div>
           <div class="form-group">
-            <label for="alamat_dokter">Alamat</label>
-            <textarea name="alamat_dokter" class="form-control" id="exampleFormControlTextarea1"
-              rows="3">{{ $dokter->alamat_dokter }}</textarea>
+            <label for="email">Email User</label>
+            <input type="text" class="form-control @error('email') is-invalid @enderror" id="email" name="email"
+              placeholder="Email User" value="{{ old('email') }}">
+            @error('email')
+            <span class="invalid-feedback" role="alert">
+              <strong>{{ $message }}</strong>
+            </span>
+            @enderror
           </div>
-          <div class="form-group">
-            <label for="spesialisasi_dokter">Spesialisasi</label>
-            <select name="spesialisasi_dokter" class="form-control" id="spesialisasi_dokter">
-              <option value="Poli Umum" {{($dokter->spesialisasi_dokter === 'Poli Umum') ? 'Selected' : ''}}>Poli
-                Umum
-              </option>
-              <option value="Poli Anak" {{($dokter->spesialisasi_dokter === 'Poli Anak') ? 'Selected' : ''}}>Poli
-                Anak
-              </option>
-              <option value="Poli Lansia" {{($dokter->spesialisasi_dokter === 'Poli Lansia') ? 'Selected' : ''}}>
-                Poli
-                Lansia
-              </option>
-            </select>
-          </div>
-          <button type="submit" class="btn btn-info">Update</button>
+          <button type="submit" class="btn btn-info">Tambah</button>
         </form>
       </div>
     </div>
-
   </div>
   <!-- /.container-fluid -->
-
 </div>
 <!-- End of Main Content -->
 @endsection

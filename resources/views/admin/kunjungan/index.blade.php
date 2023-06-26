@@ -37,58 +37,49 @@
   <!-- Begin Page Content -->
   <div class="container-fluid">
     <!-- Page Heading -->
-    <h1 class="h3 mb-3 text-gray-800 font-weight-bold">Daftar User</h1>
+    <h1 class="h3 mb-3 text-gray-800 font-weight-bold">Daftar Kunjungan</h1>
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
-      <div class="card-header py-3">
-        <h5 class="font-weight-bold text-primary">Daftar User
-          <a href="{{ route('admin-pasien.create') }}" class="btn btn-primary font-weight-bold">
-            + Tambah User
-          </a>
-        </h5>
-      </div>
       <div class="card-body">
         <div class="table-responsive">
           <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
             <thead>
               <tr>
                 <th>No. RM</th>
+                <th>Tanggal Kunjungan</th>
                 <th>Nama Lengkap</th>
-                <th>NIK KTP</th>
-                <th>Tempat, Tanggal Lahir</th>
-                <th>Jenis Kelamin</th>
-                <th>Alamat Lengkap</th>
+                <th>No. Antrian</th>
+                <th>Keluhan</th>
+                <th>No Telp</th>
+                <th>Pembayaran</th>
                 <th>Actions</th>
               </tr>
             </thead>
             <tfoot>
               <tr>
                 <th>No. RM</th>
+                <th>Tanggal Kunjungan</th>
                 <th>Nama Lengkap</th>
-                <th>NIK KTP</th>
-                <th>Tempat, Tanggal Lahir</th>
-                <th>Jenis Kelamin</th>
-                <th>Alamat Lengkap</th>
+                <th>No. Antrian</th>
+                <th>Keluhan</th>
+                <th>No Telp</th>
+                <th>Pembayaran</th>
                 <th>Actions</th>
               </tr>
             </tfoot>
             <tbody>
-              @foreach ($pasien as $item)
+              @foreach ($kunjungan as $item)
               <tr>
                 <td>{{ $item->no_rm }}</td>
-                <td>{{ $item->nama_pasien }}</td>
-                <td>{{ $item->nik }}</td>
-                <td>{{ $item->dob }}</td>
-                <td>{{ $item->gender }}</td>
-                <td>{{ $item->alamat_pasien }}</td>
+                <td>{{ $item->tgl_kunjungan }}</td>
+                <td>{{ $item->nama_lengkap }}</td>
+                <td>{{ $item->no_antrian }}</td>
+                <td>{{ $item->keluhan }}</td>
+                <td>{{ $item->no_telp }}</td>
+                <td>{{ $item->status_pembayaran }}</td>
                 <td>
-                    {{-- <span>
-                        <a href="{{ route('admin-pasien.detail', $item->id) }}" class="btn btn-success">
-                          Detail
-                        </a>
-                    </span> --}}
-                    <span><a href="{{ route('admin-pasien.edit', $item->id) }}" class="btn btn-warning">Edit</a></span>
-                    <form action="{{ route('admin-pasien.destroy', $item->id) }}" method="post">
+                    <span><a href="" class="btn btn-warning">Verify</a></span>
+                    <form action="" method="post">
                         @method('delete')
                         @csrf
                         <span><button onclick="return confirm('Are you sure?')" class="btn btn-danger d-block"
