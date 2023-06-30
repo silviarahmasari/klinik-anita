@@ -133,4 +133,8 @@ class PasienController extends Controller
     $pdf = PDF::loadView('cetak-pasien', $data);
     return $pdf->download($pasien->nama_pasien . '.pdf');
   }
+
+  public function profile() {
+    return view('pasien.index');
+  }
 }
