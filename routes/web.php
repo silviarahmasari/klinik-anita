@@ -35,6 +35,7 @@ Route::get('/home', function (){
                               })->middleware('guest');
 Route::resource('dokter', DokterController::class)->middleware('checkRole:dokter,admin');
 Route::resource('pasien', PasienController::class)->middleware('checkRole:dokter,pasien,admin');
+Route::get('/pasien/profile', [PasienController::class, 'profile'])->name('profile')->middleware('checkrole:admin,pasien');
 Route::resource('admin', AdminController::class)->middleware('checkRole:admin');
 Route::resource('perjanjian', PerjanjianController::class)->middleware('checkRole:pasien,admin');
 Route::resource('obat', ObatController::class)->middleware('checkRole:dokter,admin');

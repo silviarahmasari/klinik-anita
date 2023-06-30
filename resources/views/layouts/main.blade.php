@@ -82,6 +82,56 @@
       @if (Auth::user()->role == 'pasien')
       <!-- Nav Item - Utilities Collapse Menu -->
       <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#dataProfile"
+          aria-expanded="true" aria-controls="collapseUtilities">
+          <i class="fas fa-user-injured"></i> <span>Data Profile</span>
+        </a>
+        <div id="dataProfile" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Action</h6>
+            <a class="collapse-item" href="{{ route('profile') }}">Profile</a>
+          </div>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#dataLayanan"
+          aria-expanded="true" aria-controls="collapseUtilities">
+          <i class="fas fa-user-injured"></i> <span>Data Layanan</span>
+        </a>
+        <div id="dataLayanan" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Action</h6>
+            <a class="collapse-item" href="{{ route('profile') }}">Pendaftaran Kunjungan</a>
+            <a class="collapse-item" href="{{ route('profile') }}">Riwayat Kunjungan</a>
+            <a class="collapse-item" href="{{ route('profile') }}">Riwayat Rawat Inap</a>
+          </div>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#dataRekamMedis"
+          aria-expanded="true" aria-controls="collapseUtilities">
+          <i class="fas fa-user-injured"></i> <span>Data Rekam Medis</span>
+        </a>
+        <div id="dataRekamMedis" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Action</h6>
+            <a class="collapse-item" href="{{ route('pasien.index') }}">Rekam Medis</a>
+          </div>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#kritikSaran"
+          aria-expanded="true" aria-controls="collapseUtilities">
+          <i class="fas fa-user-injured"></i> <span>Kritik & Saran</span>
+        </a>
+        <div id="kritikSaran" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Action</h6>
+            <a class="collapse-item" href="{{ route('pasien.index') }}">Form Kritik & Saran</a>
+          </div>
+        </div>
+      </li>
+      <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
           aria-expanded="true" aria-controls="collapseUtilities">
           <i class="fas fa-user-injured"></i> <span>Pasien</span>
