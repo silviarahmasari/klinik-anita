@@ -11,9 +11,8 @@ class Pasien extends Model
   protected $guarded = ['id'];
   public $timestamps = true;
 
-  public function dokter()
-  {
-    return $this->belongsTo(Dokter::class);
+  public function users() {
+    return $this->belongsTo(User::class);
   }
   public function obats()
   {

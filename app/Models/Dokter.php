@@ -9,8 +9,4 @@ class Dokter extends Model
 {
   use HasFactory;
   protected $guarded = ['id'];
-  public function pasiens()
-  {
-    return $this->hasMany(Pasien::class);
-  }
 }

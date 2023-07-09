@@ -15,15 +15,13 @@ class CreatePasiensTable extends Migration
   {
     Schema::create('pasiens', function (Blueprint $table) {
       $table->bigIncrements('id');
+      $table->unsignedBigInteger('user_id');
       $table->string('nama_pasien');
       $table->string('alamat_pasien');
       $table->string('tgl_datang');
-      $table->string('nama_obat');
       $table->string('no_telp');
-      $table->text('keluhan_pasien');
-      $table->unsignedBigInteger('dokter_id');
       // $table->unsignedBigInteger('obat_id');
-      $table->foreign('dokter_id')->references('id')->on('dokters')->onDelete('cascade');
+      $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
       // $table->foreign('obat_id')->references('id')->on('obats')->onDelete('cascade');
       $table->timestamps();;
     });

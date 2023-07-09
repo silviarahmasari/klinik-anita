@@ -15,7 +15,6 @@ class AddColumnToPasiensTable extends Migration
     {
         Schema::table('pasiens', function (Blueprint $table) {
             $table->bigInteger('id_pembayaran')->nullable();
-            $table->bigInteger('no_rm')->nullable();
             $table->string('nik')->length(16)->nullable();
             $table->string('tempat_lahir')->nullable();
             $table->string('tanggal_lahir')->nullable();
@@ -26,7 +25,6 @@ class AddColumnToPasiensTable extends Migration
             $table->enum('pekerjaan', ['ASN', 'Wiraswasta', 'Swasta', 'Pelajar', 'Lainnya'])->nullable();
             $table->enum('kewarganegaraan', ['WNA', 'WNI'])->nullable();
             $table->string('penanggung_jawab')->nullable();
-            $table->enum('triase_tujuan', ['Poli Rawat Inap', 'IGD', 'Poli Kandungan'])->nullable();
             $table->string('riwayat_penyakit')->nullable();
             $table->string('riwayat_alergi')->nullable();
         });

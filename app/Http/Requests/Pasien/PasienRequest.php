@@ -25,11 +25,22 @@ class PasienRequest extends FormRequest
   {
     return [
       'nama_pasien' => 'required',
+      'nik' => 'required',
+      'tempat_lahir' => 'required',
+      'tanggal_lahir' => 'required',
+      'gender' => 'required',
       'alamat_pasien' => 'required',
-      'keluhan_pasien' => 'required',
+      'agama' => 'required',
+      'status_nikah' => 'required',
+      'pendidikan_terakhir' => 'required',
+      'pekerjaan' => 'required',
+      'kewarganegaraan' => 'required',
+      'penanggung_jawab' => 'required',
       'no_telp' => 'required',
-      'dokter_id' => 'required',
+      'riwayat_penyakit' => 'required',
+      'riwayat_alergi' => 'required',
       // 'nama_obat' => 'required'
+
     ];
   }
 }

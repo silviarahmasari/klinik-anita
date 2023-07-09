@@ -35,7 +35,12 @@ Route::get('/home', function (){
                               })->middleware('guest');
 Route::resource('dokter', DokterController::class)->middleware('checkRole:dokter,admin');
 Route::resource('pasien', PasienController::class)->middleware('checkRole:dokter,pasien,admin');
-Route::get('/pasien/profile', [PasienController::class, 'profile'])->name('profile')->middleware('checkrole:admin,pasien');
+Route::get('/pasien-profile', [PasienController::class, 'profile'])->name('pasien.profile')->middleware('checkRole:admin,pasien');
+Route::post('/profile-insert', [PasienController::class, 'profileInsert'])->name('pasien.profileInsert')->middleware('checkRole:admin,pasien');
+Route::get('/kunjungan', [PasienController::class, 'kunjungan'])->name('pasien.kunjungan')->middleware('checkRole:admin,pasien');
+Route::post('/kunjungan-insert', [PasienController::class, 'kunjunganInsert'])->name('pasien.kunjunganInsert')->middleware('checkRole:admin,pasien');
+Route::get('/kritik-saran', [PasienController::class, 'kritikSaran'])->name('pasien.kritikSaran')->middleware('checkRole:admin,pasien');
+Route::post('/kritik-saran-insert', [PasienController::class, 'kritikSaranInsert'])->name('pasien.kritikSaranInsert')->middleware('checkRole:admin,pasien');
 Route::resource('admin', AdminController::class)->middleware('checkRole:admin');
 Route::resource('perjanjian', PerjanjianController::class)->middleware('checkRole:pasien,admin');
 Route::resource('obat', ObatController::class)->middleware('checkRole:dokter,admin');
