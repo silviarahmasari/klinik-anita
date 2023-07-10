@@ -23,6 +23,19 @@ class PasienController extends Controller
    */
   public function index()
   {
+    if (Auth::user()->role == 'dokter') {
+      // $pasien = Pasien::with(['dokter'])->get();
+      $pasien = Dokter::with('pasiens')->where('nama_dokter', Auth::user()->name)->get()->collect();
+      $obat = Obat::with('pasien')->get();
+      // $
+      $data = [
+        'pasiens' => $pasien,
+        'obats' => $obat
+      ];
+
+      return view('dokter.pasien.index', $data);
+    }
+
     $perjanjians = Perjanjian::with('pasien')->where('pasien_id', Auth::user()->id)->get();
     $data  = [
       'pasiens' => $perjanjians

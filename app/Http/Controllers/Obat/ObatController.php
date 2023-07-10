@@ -25,7 +25,7 @@ class ObatController extends Controller
     if (Auth::user()->role == 'admin') {
       return view('admin.obat.index', $data);
     }
-    return view('obat.index', $data);
+    return view('dokter.obat.index', $data);
   }
 
   /**
@@ -85,6 +85,7 @@ class ObatController extends Controller
    */
   public function update(Request $request, Obat $obat)
   {
+    // dd($request->all());
     $validatedData = $request->all();
     $obat->update($validatedData);
     return redirect()->route('obat.index');

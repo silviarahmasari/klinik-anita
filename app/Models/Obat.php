@@ -13,4 +13,10 @@ class Obat extends Model
   {
     return $this->belongsTo(Pasien::class);
   }
+
+  public function rekam_medis()
+  {
+    return $this->hasMany(RekamMedis::class, 'obat');
+  }
 }
+

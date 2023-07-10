@@ -23,6 +23,7 @@ class RawatInapController extends Controller
         if (Auth::user()->role == 'admin') {
           return view('admin.rawatinap.index', compact('rawat'));
         }
+        return view('dokter.rawatinap.index', compact('rawat'));
     }
 
     /**
