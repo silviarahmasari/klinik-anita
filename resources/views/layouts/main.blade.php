@@ -18,7 +18,6 @@
   <!-- Custom styles for this template-->
   <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
   <link href="{{ asset('css/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
-
 </head>
 
 <body id="page-top">
@@ -50,30 +49,61 @@
       @if (Auth::user()->role == 'dokter')
       <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
-          aria-controls="collapseTwo">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseRekamMedis" aria-expanded="true"
+          aria-controls="collapseRekamMedis">
           <i class="fas fa-user-injured"></i>
-          <span>Pasien</span>
+          <span>Pengelolaan Rekam Medis</span>
         </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div id="collapseRekamMedis" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Action</h6>
-            <a class="collapse-item" href="{{ route('dokter.index') }}">Daftar Pasien</a>
+            <a class="collapse-item" href="{{ route('rekam-medis.index') }}">Daftar Rekam Medis</a>
+
+          </div>
+        </div>
+      </li>
+      <!-- Nav Item - Pages Collapse Menu -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayanan" aria-expanded="true"
+          aria-controls="collapseLayanan">
+          <i class="fas fa-user-injured"></i>
+          <span>Daftar Layanan</span>
+        </a>
+        <div id="collapseLayanan" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Action</h6>
+            <a class="collapse-item" href="{{ route('kunjungan.index') }}">Data Kunjungan</a>
+            <a class="collapse-item" href="{{ route('rawatinap.index') }}">Data Rawat Inap</a>
+
+          </div>
+        </div>
+      </li>
+      <!-- Nav Item - Pages Collapse Menu -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePasien" aria-expanded="true"
+          aria-controls="collapsePasien">
+          <i class="fas fa-user-injured"></i>
+          <span>Daftar Pasien</span>
+        </a>
+        <div id="collapsePasien" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Action</h6>
+            <a class="collapse-item" href="{{ route('pasien.index') }}">Data Pasien</a>
 
           </div>
         </div>
       </li>
       <!-- Nav Item - Utilities Collapse Menu -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-          aria-expanded="true" aria-controls="collapseUtilities">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseObat"
+          aria-expanded="true" aria-controls="collapseObat">
           <i class="fas fa-tablets"></i>
-          <span>Obat</span>
+          <span>Daftar Obat</span>
         </a>
-        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+        <div id="collapseObat" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Action</h6>
-            <a class="collapse-item" href="{{ route('obat.index') }}">Daftar Obat</a>
+            <a class="collapse-item" href="{{ route('obat.index') }}">Data Obat</a>
           </div>
         </div>
       </li>
@@ -171,7 +201,7 @@
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Action</h6>
-            <a class="collapse-item" href="{{ route('kunjungan-admin.index') }}">Daftar Kunjungan</a>
+            <a class="collapse-item" href="{{ route('kunjungan.index') }}">Daftar Kunjungan</a>
             <a class="collapse-item" href="{{ route('rawatinap.index') }}">Daftar Rawat Inap</a>
           </div>
         </div>
@@ -248,7 +278,20 @@
   <script src="{{ asset('js/dataTables.bootstrap4.min.js') }}"></script>
   <!-- Page level custom scripts -->
   <script src="{{ asset('js/datatables-demo.js') }}"></script>
-</body>
 
+  <!-- select2 -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+  <!-- end: include bootstrap4 and select2 -->
+
+  <script>
+    $(".multiselect-obat").select2({
+      minimumResultsForSearch: Infinity,
+      placeholder: "   Pilih Obat ",
+      allowClear: true
+    });
+  </script>
+  
+</body>
 </html>
 

@@ -6,11 +6,9 @@
   <!-- Topbar -->
   <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
     <!-- Sidebar Toggle (Topbar) -->
-    <form class="form-inline">
-      <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-        <i class="fa fa-bars"></i>
-      </button>
-    </form>
+    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+      <i class="fa fa-bars"></i>
+    </button>
     <!-- Topbar Navbar -->
     <ul class="navbar-nav ml-auto">
       <div class="topbar-divider d-none d-sm-block"></div>
@@ -22,7 +20,7 @@
           <img class="img-profile rounded-circle" src="{{ asset('img/undraw_profile.svg') }}">
         </a>
         <!-- Dropdown - User Information -->
-        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                    document.getElementById('logout-form').submit();">
             {{ __('Logout') }}
@@ -39,35 +37,44 @@
   <!-- Begin Page Content -->
   <div class="container-fluid">
     <!-- Page Heading -->
-    <h1 class="h3 mb-3 text-gray-800">Obat</h1>
+    <h1 class="h3 mb-3 text-gray-800 font-weight-bold">Daftar Kunjungan</h1>
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
-      <div class="card-header py-3">
-        <h5 class="font-weight-bold text-primary">Daftar Obat</h5>
-      </div>
       <div class="card-body">
         <div class="table-responsive">
           <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
             <thead>
               <tr>
-                <th>Nama Obat</th>
-                <th>Jumlah Obat</th>
-                <th>Harga Obat</th>
+                <th>No. RM</th>
+                <th>Tanggal Kunjungan</th>
+                <th>Nama Lengkap</th>
+                <th>No. Antrian</th>
+                <th>Keluhan</th>
+                <th>No Telp</th>
+                <th>Pembayaran</th>
               </tr>
             </thead>
             <tfoot>
               <tr>
-                <th>Nama Obat</th>
-                <th>Jumlah Obat</th>
-                <th>Harga Obat</th>
+                <th>No. RM</th>
+                <th>Tanggal Kunjungan</th>
+                <th>Nama Lengkap</th>
+                <th>No. Antrian</th>
+                <th>Keluhan</th>
+                <th>No Telp</th>
+                <th>Pembayaran</th>
               </tr>
             </tfoot>
             <tbody>
-              @foreach ($obats as $obat)
+              @foreach ($kunjungan as $item)
               <tr>
-                <td>{{ $obat->nama_obat }}</td>
-                <td>{{ $obat->jumlah_obat }}</td>
-                <td>{{ $obat->harga_obat }}</td>
+                <td>{{ $item->no_rm }}</td>
+                <td>{{ $item->tgl_kunjungan }}</td>
+                <td>{{ $item->nama_lengkap }}</td>
+                <td>{{ $item->no_antrian }}</td>
+                <td>{{ $item->keluhan }}</td>
+                <td>{{ $item->no_telp }}</td>
+                <td>{{ $item->status_pembayaran }}</td>
               </tr>
               @endforeach
             </tbody>

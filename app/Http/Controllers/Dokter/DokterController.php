@@ -22,6 +22,7 @@ class DokterController extends Controller
     // $pasien = Pasien::with(['dokter'])->get();
     $pasien = Dokter::with('pasiens')->where('nama_dokter', Auth::user()->name)->get()->collect();
     $obat = Obat::with('pasien')->get();
+    // $
     $data = [
       'pasiens' => $pasien,
       'obats' => $obat

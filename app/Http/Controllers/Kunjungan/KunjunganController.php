@@ -5,8 +5,9 @@ namespace App\Http\Controllers\Kunjungan;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Kunjungan;
+use Illuminate\Support\Facades\Auth;
 
-class KunjunganAdminController extends Controller
+class KunjunganController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +16,11 @@ class KunjunganAdminController extends Controller
      */
     public function index()
     {
-
         $kunjungan = Kunjungan::all();
-        return view('admin.kunjungan.index', compact('kunjungan'));
+        if (Auth::user()->role == 'admin') {
+            return view('admin.kunjungan.index', compact('kunjungan'));
+        }
+        return view('dokter.kunjungan.index', compact('kunjungan'));
     }
 
     /**
