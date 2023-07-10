@@ -32,11 +32,13 @@ class HomeController extends Controller
     $dokter = Dokter::all()->collect()->count();
     $obat =  Obat::all()->collect()->count();
     $perjanjian = Perjanjian::where('nama_dokter', Auth::user()->name)->get();
+    $checkPasien = Pasien::where('user_id', Auth::user()->id)->count();
     $data = [
       'pasien' => $pasien,
       'dokter' => $dokter,
       'obat' => $obat,
-      'perjanjians' => $perjanjian
+      'perjanjians' => $perjanjian,
+      'checkPasien' => $checkPasien
     ];
     return view('home', $data);
   }

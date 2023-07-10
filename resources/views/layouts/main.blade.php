@@ -89,7 +89,7 @@
         <div id="dataProfile" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Action</h6>
-            <a class="collapse-item" href="{{ route('profile') }}">Profile</a>
+            <a class="collapse-item" href="{{ route('pasien.profile') }}">Profile</a>
           </div>
         </div>
       </li>
@@ -101,9 +101,9 @@
         <div id="dataLayanan" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Action</h6>
-            <a class="collapse-item" href="{{ route('profile') }}">Pendaftaran Kunjungan</a>
-            <a class="collapse-item" href="{{ route('profile') }}">Riwayat Kunjungan</a>
-            <a class="collapse-item" href="{{ route('profile') }}">Riwayat Rawat Inap</a>
+            <a class="collapse-item" href="{{ route('pasien.kunjungan') }}">Pendaftaran Kunjungan</a>
+            <a class="collapse-item" href="{{ route('pasien.profile') }}">Riwayat Kunjungan</a>
+            <a class="collapse-item" href="{{ route('pasien.profile') }}">Riwayat Rawat Inap</a>
           </div>
         </div>
       </li>
@@ -127,7 +127,7 @@
         <div id="kritikSaran" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Action</h6>
-            <a class="collapse-item" href="{{ route('pasien.index') }}">Form Kritik & Saran</a>
+            <a class="collapse-item" href="{{ route('pasien.kritikSaran') }}">Form Kritik & Saran</a>
           </div>
         </div>
       </li>

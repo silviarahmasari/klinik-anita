@@ -44,6 +44,9 @@
       {{-- <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
         <i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a> --}}
     </div>
+    @if($checkPasien == 0)
+      <span style="color: #F23E3E">Silahkan lengkapi data diri anda terlebih dahulu</span>
+    @endif
     <!-- Content Row -->
     <div class="row">
       <!-- Earnings (Monthly) Card Example -->

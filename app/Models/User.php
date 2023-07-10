@@ -46,4 +46,11 @@ class User extends Authenticatable
   {
     return $this->hasMany(Perjanjian::class);
   }
+  public function pasiens() {
+    return $this->hasOne(Pasien::class);
+  }
+
+  public function kritikSaran() {
+    return $this->hasOne(kritikSaran::class);
+  }
 }
