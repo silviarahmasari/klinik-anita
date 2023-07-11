@@ -687,6 +687,27 @@
           <h2>Pengumuman</h2>
           <p>Mengumumkan informasi terbaru yang ada di Klinik Pratama Rawat Inap "Dokter Anita"</p>
         </div>
+
+        <div class="card-group">
+        <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
+            <div class="swiper-wrapper">
+              @foreach ($pengumuman as $data)
+              <div class="swiper-slide">
+                <div class="testimonial-wrap">
+                  <div class="testimonial-item">
+                    <img src="{{ asset('/storage/gambar-pengumuman/' . $data->gambar) }}" class="testimonial-img" alt="">
+                    <h3>{{ $data->judul_pengumuman }}</h3>
+                    <p>
+                      {{ $data->deskripsi }}                  
+                    </p>
+                  </div>
+                </div>
+              </div>
+              @endforeach
+            </div>
+          <div class="swiper-pagination"></div>
+        </div>
+        </div>
       </div>
     </section>
     <!-- End Pengumuman Section -->

@@ -18,4 +18,8 @@ class Pasien extends Model
   {
     return $this->hasMany(Obat::class);
   }
+  public function pasien_rekam_medis()
+  {
+    return $this->hasMany(RekamMedis::class, 'pasien_id');
+  }
 }
