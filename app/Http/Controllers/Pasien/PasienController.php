@@ -138,9 +138,10 @@ class PasienController extends Controller
   }
 
   public function profile() {
+    $checkPasien = Pasien::where('user_id', Auth::user()->id)->count();
     $pasien = pasien::where('user_id', Auth::user()->id)->first();
-    // dd($pasien);
-    return view('pasien.profile', compact('pasien'));
+    // dd($checkPasien);
+    return view('pasien.profile', compact('pasien', 'checkPasien'));
   }
 
   public function profileInsert(PasienRequest $request, Pasien $pasien) {
@@ -175,7 +176,6 @@ class PasienController extends Controller
     $validatedData = $request->all();
     $validatedData['user_id'] = Auth::user()->id;
     $validatedData['nama_pelanggan'] = Auth::user()->name;
-    dd($validatedData);
     kritikSaran::create($validatedData);
     return redirect()->route('home');
   }

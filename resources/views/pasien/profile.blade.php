@@ -6,9 +6,13 @@
     display: grid;
     grid-template-columns: 200px 500px;
   }
-	input{
-		margin-bottom: 10px
+	h5{
+		margin-bottom: 10px;
+    font-size: 18px
 	}
+  input{
+    margin-bottom: 10px
+  }
 	select{
 		margin-bottom: 10px
 	}
@@ -56,6 +60,7 @@
   </nav>
   <!-- End of Topbar -->
   <!-- Begin Page Content -->
+  @if($checkPasien == 0)
   <div class="container-fluid">
     <!-- Page Heading -->
     <h1 class="h3 mb-3 text-gray-800">Profile Pasien</h1>
@@ -258,6 +263,244 @@
 			</div>
     </div>
   </div>
+  @else
+  <div class="container-fluid">
+    <!-- Page Heading -->
+    <h1 class="h3 mb-3 text-gray-800">Data Profile</h1>
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+      <div class="card-header py-3">
+        No. RM :
+      </div>
+			<div class="card-body">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="input">
+                <label for="nama_pasien">Nama Lengkap</label>
+                <h5>{{ $pasien->nama_pasien }}</h5>
+
+                <label for="nik">NIK KTP</label>
+                <h5>{{ $pasien->nik }}</h5>
+                
+                <label for="ttl">Tempat Tanggal Lahir</label>
+                <h5>{{ $pasien->tempat_lahir }}, {{ $pasien->tanggal_lahir }}</h5>
+
+                <label for="gender">Jenis kelamin</label>
+                <h5>{{ $pasien->gender }}</h5>
+
+                <label for="alamat_pasien">Alamat Lengkap</label>
+                <h5>{{ $pasien->alamat_pasien }}</h5>
+
+                <label for="agama">Agama</label>
+                <h5>{{ $pasien->agama }}</h5>
+
+                <label for="status_nikah">Status Perkawinan</label>
+                <h5>{{ $pasien->status_nikah }}</h5>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="input">
+                <label for="pendidikan_terakhir">Pendidikan Terakhir</label>
+                <h5>{{ $pasien->pendidikan_terakhir }}</h5>
+
+                <label for="pekerjaan">Pekerjaan</label>
+                <h5>{{ $pasien->pekerjaan }}</h5>
+
+                <label for="kewarganegaraan">Kewarganegaraan</label>
+                <h5>{{ $pasien->kewarganegaraan }}</h5>
+
+                <label for="penanggung_jawab">Nama Penanggungjawab</label>
+                <h5>{{ $pasien->penanggung_jawab }}</h5>
+
+                <label for="no_telp">No. Telp/HP</label>
+                <h5>{{ $pasien->no_telp }}</h5>
+
+                <label for="riwayat_penyakit">Riwayat Penyakit</label>
+                <h5>{{ $pasien->riwayat_penyakit }}</h5>
+
+                <label for="riwayat_alergi">Riwayat Alergi</label>
+                <h5>{{ $pasien->riwayat_alergi }}</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+			</div>
+    </div>
+
+    <h1 class="h3 mb-3 text-gray-800">Edit Data Profile</h1>
+    <div class="card shadow mb-4">
+      <div class="card-header py-3">
+        No. RM :
+      </div>
+			<div class="card-body">
+				<form action="{{ route('pasien.profileInsert') }}" method="post">
+					@csrf
+					<div class="card-body">
+						<div class="row">
+							<div class="col-md-6">
+								<div class="input">
+									<label for="nama_pasien">Nama Lengkap</label>
+									<input type="text" class="form-control" name="nama_pasien" id="nama_pasien" value="{{ $pasien->nama_pasien }}">
+
+									<label for="nik">NIK KTP</label>
+									<input type="number" class="form-control" name="nik" id="nik" value="{{ $pasien->nik }}">
+                  
+									<label for="ttl">Tempat Tanggal Lahir</label>
+									<div class="row">
+										<div class="col-md-8">
+											<input type="text" class="form-control" name="tempat_lahir" id="tempat_lahhir" value="{{ $pasien->tempat_lahir }}">
+										</div>
+
+										<div class="col-md-4">
+											<input type="date" class="form-control" name="tanggal_lahir" id="tanggal_lahir" value="{{ $pasien->tanggal_lahir }}">
+										</div>
+									</div>
+
+                  <label for="gender">Jenis kelamin</label>
+                  <select class="form-control @error('gender') is-invalid @enderror" name="gender" id="gender">
+                    @if($pasien->gender == 'Laki-laki')
+                    <option selected value="Laki-laki">Laki-laki</option>
+                    <option value="Perempuan">Perempuan</option>
+                    @else
+                    <option value="Laki-laki">Laki-laki</option>
+                    <option selected value="Perempuan">Perempuan</option>
+                    @endif
+                  </select>
+
+                  <label for="alamat_pasien">Alamat Lengkap</label>
+									<textarea class="form-control" name="alamat_pasien" id="alamat_pasien" rows="4">{{ $pasien->alamat_pasien }}</textarea>
+
+                  <label for="agama">Agama</label>
+                  <select class="form-control @error('agama') is-invalid @enderror" name="agama" id="agama">
+                    <option value="Islam">Islam</option>
+                    <option value="Protestan">Protestan</option>
+                    <option value="Kristen">Kristen</option>
+                    <option value="Hindu">Hindu</option>
+                    <option value="Buddha">Buddha</option>
+                    <option value="Khonghucu">Khonghucu</option>
+                    <option value="Lainnya">Lainnya</option>
+                  </select>
+                  @error('agama')
+                  <label></label>
+									<span class="invalid-feedback">
+										<strong>{{ $message }}</strong>
+									</span>
+									@enderror
+
+                  <label for="status_nikah">Status Perkawinan</label>
+                  <select class="form-control @error('status_nikah') is-invalid @enderror" name="status_nikah" id="status_nikah">
+                    <option value="" readonly disabled selected>Pilih status perkawinan</option>
+                    <option value="Belum kawin" {{ old('status_nikah') == 'Belum kawin' ? 'selected' : '' }}>Belum Kawin</option>
+                    <option value="Kawin" {{ old('status_nikah') == 'Kawin' ? 'selected' : '' }}>Kawin</option>
+                    <option value="Janda" {{ old('status_nikah') == 'Janda' ? 'selected' : '' }}>Janda</option>
+                    <option value="Duda" {{ old('status_nikah') == 'Duda' ? 'selected' : '' }}>Duda</option>
+                  </select>
+                  @error('status_nikah')
+                  <label></label>
+									<span class="invalid-feedback">
+										<strong>{{ $message }}</strong>
+									</span>
+									@enderror
+								</div>
+							</div>
+              <div class="col-md-6">
+                <div class="input">
+                  <label for="pendidikan_terakhir">Pendidikan Terakhir</label>
+                  <select class="form-control @error('pendidikan_terakhir') is-invalid @enderror" name="pendidikan_terakhir" id="pendidikan_terakhir">
+                    <option value="" readonly disabled selected>Pilih pendidikan terakhir</option>
+                    <option value="Sarjana" {{ old('pendidikan_terakhir') == 'Sarjana' ? 'selected' : '' }}>Sarjana</option>
+                    <option value="Diploma" {{ old('pendidikan_terakhir') == 'Diploma' ? 'selected' : '' }}>Diploma</option>
+                    <option value="SMA/SMK/MA/MAK" {{ old('pendidikan_terakhir') == 'SMA/SMK/MA/MAK' ? 'selected' : '' }}>SMA/SMK/MA/MAK</option>
+                    <option value="SMP/Mts" {{ old('pendidikan_terakhir') == 'SMP/Mts' ? 'selected' : '' }}>SMP/Mts</option>
+                    <option value="SD/MI" {{ old('pendidikan_terakhir') == 'SD/MI' ? 'selected' : '' }}>SD/MI</option>
+                    <option value="Lainnya" {{ old('pendidikan_terakhir') == 'Lainnya' ? 'selected' : '' }}>Lainnya</option>
+                  </select>
+                  @error('pendidikan_terakhir')
+                  <label></label>
+									<span class="invalid-feedback">
+										<strong>{{ $message }}</strong>
+									</span>
+									@enderror
+
+                  <label for="pekerjaan">Pekerjaan</label>
+                  <select class="form-control @error('pekerjaan') is-invalid @enderror" name="pekerjaan" id="pekerjaan">
+                    <option value="" readonly disabled selected>Pilih pekerjaan</option>
+                    <option value="ASN" {{ old('pekerjaan') == 'ASN' ? 'selected' : '' }}>ASN</option>
+                    <option value="Wiraswasta" {{ old('pekerjaan') == 'Wiraswasta' ? 'selected' : '' }}>Wiraswasta</option>
+                    <option value="Swasta" {{ old('pekerjaan') == 'Swasta' ? 'selected' : '' }}>Swasta</option>
+                    <option value="Pelajar" {{ old('pekerjaan') == 'Pelajar' ? 'selected' : '' }}>Pelajar</option>
+                    <option value="Lainnya" {{ old('pekerjaan') == 'Lainnya' ? 'selected' : '' }}>Lainnya</option>
+                  </select>
+                  @error('pekerjaan')
+                  <label></label>
+                  <span class="invalid-feedback">
+                    <strong>{{$message}}</strong>
+                  </span>
+                  @enderror
+
+                  <label for="kewarganegaraan">Kewarganegaraan</label>
+                  <select class="form-control @error('kewarganegaraan') is-invalid @enderror" name="kewarganegaraan" id="kewarganegaraan">
+                    @if($pasien->kewarganegaraan == 'WNI')
+                    <option selected value="WNI">WNI</option>
+                    <option value="WNA">WNA</option>
+                    @else
+                    <option selected value="WNA">WNA</option>
+                    <option value="WNI">WNI</option>
+                    @endif
+                  </select>
+                  @error('kewarganegaraan')
+                  <label></label>
+                  <span class="invalid-feedback">
+                    <strong>{{$message}}</strong>
+                  </span>
+                  @enderror
+
+                  <label for="penanggung_jawab">Nama Penanggungjawab</label>
+                  <input type="text" class="form-control @error('penanggung_jawab') is-invalid @enderror" name="penanggung_jawab" id="penanggung_jawab" value="{{ $pasien->penanggung_jawab }}">
+                  @error('penanggung_jawab')
+                  <label></label>
+                  <span class="invalid-feedback">
+                    <strong>{{$message}}</strong>
+                  </span>
+                  @enderror
+
+                  <label for="no_telp">No. Telp/HP</label>
+                  <input type="number" class="form-control @error('no_telp') is-invalid @enderror" name="no_telp" id="no_telp" value="{{ $pasien->no_telp }}">
+                  @error('no_telp')
+                  <label></label>
+                  <span class="invalid-feedback">
+                    <strong>{{$message}}</strong>
+                  </span>
+                  @enderror
+
+                  <label for="riwayat_penyakit">Riwayat Penyakit</label>
+                  <textarea class="form-control @error('riwayat_penyakit') is-invalid @enderror" name="riwayat_penyakit" id="riwayat_penyakit" rows="2">{{ $pasien->riwayat_penyakit }}</textarea>
+                  @error('riwayat_penyakit')
+                  <label></label>
+                  <span class="invalid-feedback">
+                    <strong>{{$message}}</strong>
+                  </span>
+                  @enderror
+
+                  <label for="riwayat_alergi">Riwayat Alergi</label>
+                  <textarea class="form-control @error('riwayat_alergi') is-invalid @enderror" name="riwayat_alergi" id="riwayat_alergi" rows="2">{{ $pasien->riwayat_penyakit }}</textarea>
+                  @error('riwayat_alergi')
+                  <label></label>
+                  <span class="invalid-feedback">
+                    <strong>{{$message}}</strong>
+                  </span>
+                  @enderror
+                </div>
+              </div>
+						</div>
+					</div>
+					<button type="submit" class="btn btn-info">Simpan</button>
+				</form>
+			</div>
+    </div>
+  </div>
+  @endif
   <!-- /.container-fluid -->
 </div>
 <!-- End of Main Content -->

@@ -85,7 +85,7 @@
 									@enderror
 
 									<label for="nama_lengkap">Nama Lengkap</label>
-									<input type="test" class="form-control @error('nama_lengkap') is-invalid @enderror" name="nama_lengkap" id="nama_lengkap" value="{{$pasien->nama_pasien}}">
+									<input type="test" class="form-control @error('nama_lengkap') is-invalid @enderror" name="nama_lengkap" id="nama_lengkap" value="{{$pasien->nama_pasien}}" readonly>
 									@error('nama_lengkap')
                   <label></label>
 									<span class="invalid-feedback">
