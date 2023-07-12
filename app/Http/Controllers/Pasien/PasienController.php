@@ -153,7 +153,7 @@ class PasienController extends Controller
   public function profile() {
     $checkPasien = Pasien::where('user_id', Auth::user()->id)->count();
     $pasien = pasien::where('user_id', Auth::user()->id)->first();
-    // dd($checkPasien);
+    // dd($pasien);
     return view('pasien.profile', compact('pasien', 'checkPasien'));
   }
 
@@ -166,10 +166,24 @@ class PasienController extends Controller
     return redirect()->route('pasien.profile');    
   }
 
+  public function profileUpdate(PasienRequest $tes, $id) {
+    $validatedData = $tes->all();
+    $pasien = Pasien::findOrFail($id);
+    $pasien->fill($validatedData);
+    $pasien->save();
+
+    return redirect()->route('pasien.profile');
+    // $pasien->udpate($validatedData);
+  }
+
   public function kunjungan() {
+    return view('pasien.kunjungan');
+  }
+
+  public function ambilAntrian() {
     $pasien = Pasien::where('user_id', Auth::user()->id)->first();
     $checkPasien = Pasien::where('user_id', Auth::user()->id)->count();
-    return view('pasien.kunjungan', compact('pasien', 'checkPasien'));
+    return view('pasien.ambilAntrian', compact('pasien', 'checkPasien'));
   }
 
   public function kunjunganInsert(KunjunganRequest $request) {

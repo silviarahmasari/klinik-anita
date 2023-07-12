@@ -39,7 +39,9 @@ Route::get('/home', function ()
 Route::resource('pasien', PasienController::class)->middleware('checkRole:dokter,pasien,admin');
 Route::get('/pasien-profile', [PasienController::class, 'profile'])->name('pasien.profile')->middleware('checkRole:admin,pasien');
 Route::post('/profile-insert', [PasienController::class, 'profileInsert'])->name('pasien.profileInsert')->middleware('checkRole:admin,pasien');
-Route::get('/kunjungan', [PasienController::class, 'kunjungan'])->name('pasien.kunjungan')->middleware('checkRole:admin,pasien');
+Route::post('/profile-udpate/{id}', [PasienController::class, 'profileUpdate'])->name('pasien.profileUpdate')->middleware('checkRole:admin,pasien');
+Route::get('/kunjungan-index', [PasienController::class, 'kunjungan'])->name('pasien.kunjungan')->middleware('checkRole:admin,pasien');
+Route::get('/kunjungan-ambil-antrian', [PasienController::class, 'ambilAntrian'])->name('pasien.ambilAntrian')->middleware('checkRole:admin,pasien');
 Route::post('/kunjungan-insert', [PasienController::class, 'kunjunganInsert'])->name('pasien.kunjunganInsert')->middleware('checkRole:admin,pasien');
 Route::get('/kritik-saran', [PasienController::class, 'kritikSaran'])->name('pasien.kritikSaran')->middleware('checkRole:admin,pasien');
 Route::post('/kritik-saran-insert', [PasienController::class, 'kritikSaranInsert'])->name('pasien.kritikSaranInsert')->middleware('checkRole:admin,pasien');
