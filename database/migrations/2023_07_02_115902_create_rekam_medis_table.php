@@ -22,7 +22,7 @@ class CreateRekamMedisTable extends Migration
             $table->text('terapi')->nullable();
             $table->text('obat')->nullable();
             $table->date('tgl_pemeriksaan_medis');
-            $table->foreign('dokter_id')->references('id')->on('dokters')->onDelete('cascade');
+            $table->foreign('dokter_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('pasien_id')->references('id')->on('pasiens')->onDelete('cascade');
             $table->timestamps();
         });

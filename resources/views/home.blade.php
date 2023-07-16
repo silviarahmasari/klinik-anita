@@ -47,6 +47,9 @@
     @if($checkPasien == 0 && Auth::user()->role == 'pasien')
       <span style="color: #F23E3E">Silahkan lengkapi data diri anda terlebih dahulu</span>
     @endif
+    @if(Auth::user()->isNewPassword == 0 && Auth::user()->role == 'dokter')
+      <span style="color: #F23E3E">Ubah password Anda terlebih dahulu</span>
+    @endif
     <!-- Content Row -->
     <div class="row">
       <!-- Earnings (Monthly) Card Example -->

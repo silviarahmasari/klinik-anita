@@ -66,6 +66,7 @@ class RekamMedisController extends Controller
     {
         // dd($request->all());
         $validatedData = $request->all();
+        $validatedData['dokter_id'] =  Auth::user()->id;
         $validatedData['obat'] = implode(", ", $request->obat);
         RekamMedis::create($validatedData);
         return redirect()->route('rekam-medis.index');
@@ -100,7 +101,7 @@ class RekamMedisController extends Controller
         $rekam_medis = RekamMedis::with('rekam_medis_pasien', 'rekam_medis_dokter')
         ->where('dokter_id', Auth::user()->id)
         ->first();
-
+        dd(Auth::user()->id);
         $rekam_medis_obat = explode(", ", $rekam_medis->obat);
 
         $pasien = Pasien::all();
