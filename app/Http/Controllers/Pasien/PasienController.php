@@ -148,9 +148,6 @@ class PasienController extends Controller
   }
 
   public function profile() {
-<<<<<<< Updated upstream
-    return view('pasien.index');
-=======
     $pasien = pasien::where('user_id', Auth::user()->id)->first();
     // dd($pasien);
     return view('pasien.profile', compact('pasien'));
@@ -192,6 +189,5 @@ class PasienController extends Controller
     dd($validatedData);
     kritikSaran::create($validatedData);
     return redirect()->route('home');
->>>>>>> Stashed changes
   }
 }

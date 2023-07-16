@@ -131,15 +131,9 @@
         <div id="dataLayanan" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Action</h6>
-<<<<<<< Updated upstream
             <a class="collapse-item" href="{{ route('profile') }}">Pendaftaran Kunjungan</a>
             <a class="collapse-item" href="{{ route('profile') }}">Riwayat Kunjungan</a>
             <a class="collapse-item" href="{{ route('profile') }}">Riwayat Rawat Inap</a>
-=======
-            {{-- <a class="collapse-item" href="{{ route('pasien.kunjungan') }}">Pendaftaran Kunjungan</a> --}}
-            <a class="collapse-item" href="{{ route('pasien.profile') }}">Riwayat Kunjungan</a>
-            <a class="collapse-item" href="{{ route('pasien.profile') }}">Riwayat Rawat Inap</a>
->>>>>>> Stashed changes
           </div>
         </div>
       </li>

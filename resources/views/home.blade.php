@@ -44,15 +44,12 @@
       {{-- <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
         <i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a> --}}
     </div>
-<<<<<<< Updated upstream
-=======
     @if($checkPasien == 0 && Auth::user()->role == 'pasien')
       <span style="color: #F23E3E">Silahkan lengkapi data diri anda terlebih dahulu</span>
     @endif
     @if(Auth::user()->isNewPassword == 0 && Auth::user()->role == 'dokter')
       <span style="color: #F23E3E">Ubah password Anda terlebih dahulu</span>
     @endif
->>>>>>> Stashed changes
     <!-- Content Row -->
     <div class="row">
       <!-- Earnings (Monthly) Card Example -->

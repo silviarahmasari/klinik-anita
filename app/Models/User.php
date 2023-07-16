@@ -46,8 +46,6 @@ class User extends Authenticatable
   {
     return $this->hasMany(Perjanjian::class);
   }
-<<<<<<< Updated upstream
-=======
   public function pasiens() {
     return $this->hasOne(Pasien::class);
   }
@@ -59,5 +57,4 @@ class User extends Authenticatable
   {
     return $this->hasMany(RekamMedis::class, 'dokter_id');
   }
->>>>>>> Stashed changes
 }
