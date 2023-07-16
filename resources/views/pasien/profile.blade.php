@@ -2,10 +2,6 @@
 
 @section('content')
 <style>
-	.input{
-    display: grid;
-    grid-template-columns: 200px 500px;
-  }
 	h5{
 		margin-bottom: 10px;
     font-size: 18px;
@@ -303,112 +299,110 @@
       <div class="card-header py-3">
         No. RM :
       </div>
-			<div class="card-body">
-        <div class="card-body">
-          <div class="row">
-            <div class="col-md-6">
-              <div class="mb-3 row">
-                <label for="nama_pasien" class="col-sm-3 col-form-label">Nama Lengkap</label>
-                <div class="col-sm-8">
-                  <h5>: {{ $pasien->nama_pasien }}</h5>
-                </div>
-              </div>
-
-              <div class="mb-3 row">
-                <label for="nik" class="col-sm-3 col-form-label">NIK KTP</label>
-                <div class="col-sm-8">
-                  <h5>: {{ $pasien->nik }}</h5>
-                </div>
-              </div>
-              
-              <div class="mb-3 row">
-                <label for="ttl" class="col-sm-3 col-form-label">Tempat Tanggal Lahir</label>
-                <div class="col-sm-8">
-                  <h5>: {{ $pasien->tempat_lahir }}, {{ $pasien->tanggal_lahir }}</h5>
-                </div>
-              </div>
-
-              <div class="mb-3 row">
-                <label for="gender" class="col-sm-3 col-form-label">Jenis kelamin</label>
-                <div class="col-sm-8">
-                  <h5>: {{ $pasien->gender }}</h5>
-                </div>
-              </div>
-
-              <div class="mb-3 row">
-                <label for="alamat_pasien" class="col-sm-3 col-form-label">Alamat Lengkap</label>
-                <div class="col-sm-8">
-                  <h5>: {{ $pasien->alamat_pasien }}</h5>
-                </div>
-              </div>
-
-              <div class="mb-3 row">
-                <label for="agama" class="col-sm-3 col-form-label">Agama</label>
-                <div class="col-sm-8">
-                  <h5>: {{ $pasien->agama }}</h5>
-                </div>
-              </div>
-
-              <div class="mb-3 row">
-                <label for="status_nikah" class="col-sm-3 col-form-label">Status Perkawinan</label>
-                <div class="col-sm-8">
-                  <h5>: {{ $pasien->status_nikah }}</h5>
-                </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="mb-2 row">
+              <label for="nama_pasien" class="col-sm-3 col-form-label">Nama Lengkap</label>
+              <div class="col-sm-8">
+                <h5>: {{ $pasien->nama_pasien }}</h5>
               </div>
             </div>
-            <div class="col-md-6">
-              <div class="mb-3 row">
-                <label for="pendidikan_terakhir" class="col-sm-4 col-form-label">Pendidikan Terakhir</label>
-                <div class="col-sm-8">
-                  <h5>: {{ $pasien->pendidikan_terakhir }}</h5>
-                </div>
-              </div>
 
-              <div class="mb-3 row">
-                <label for="pekerjaan" class="col-sm-4 col-form-label">Pekerjaan</label>
-                <div class="col-sm-8">
-                  <h5>: {{ $pasien->pekerjaan }}</h5>
-                </div>
+            <div class="mb-2 row">
+              <label for="nik" class="col-sm-3 col-form-label">NIK KTP</label>
+              <div class="col-sm-8">
+                <h5>: {{ $pasien->nik }}</h5>
               </div>
-
-              <div class="mb-3 row">
-                <label for="kewarganegaraan" class="col-sm-4 col-form-label">Kewarganegaraan</label>
-                <div class="col-sm-8">
-                  <h5>: {{ $pasien->kewarganegaraan }}</h5>
-                </div>
+            </div>
+            
+            <div class="mb-2 row">
+              <label for="ttl" class="col-sm-3 col-form-label">Tempat Tanggal Lahir</label>
+              <div class="col-sm-8">
+                <h5>: {{ $pasien->tempat_lahir }}, {{ $pasien->tanggal_lahir }}</h5>
               </div>
+            </div>
 
-              <div class="mb-3 row">
-                <label for="penanggung_jawab" class="col-sm-4 col-form-label">Nama Penanggungjawab</label>
-                <div class="col-sm-8">
-                  <h5>: {{ $pasien->penanggung_jawab }}</h5>
-                </div>
+            <div class="mb-2 row">
+              <label for="gender" class="col-sm-3 col-form-label">Jenis kelamin</label>
+              <div class="col-sm-8">
+                <h5>: {{ $pasien->gender }}</h5>
               </div>
+            </div>
 
-              <div class="mb-3 row">
-                <label for="no_telp" class="col-sm-4 col-form-label">No. Telp/HP</label>
-                <div class="col-sm-8">
-                  <h5>: {{ $pasien->no_telp }}</h5>                  
-                </div>
+            <div class="mb-2 row">
+              <label for="alamat_pasien" class="col-sm-3 col-form-label">Alamat Lengkap</label>
+              <div class="col-sm-8">
+                <h5>: {{ $pasien->alamat_pasien }}</h5>
               </div>
+            </div>
 
-              <div class="mb-3 row">
-                <label for="riwayat_penyakit" class="col-sm-4 col-form-label">Riwayat Penyakit</label>
-                <div class="col-sm-8">
-                  <h5>: {{ $pasien->riwayat_penyakit }}</h5>
-                </div>
+            <div class="mb-2 row">
+              <label for="agama" class="col-sm-3 col-form-label">Agama</label>
+              <div class="col-sm-8">
+                <h5>: {{ $pasien->agama }}</h5>
               </div>
+            </div>
 
-              <div class="mb-3 row">
-                <label for="riwayat_alergi" class="col-sm-4 col-form-label">Riwayat Alergi</label>
-                <div class="col-sm-8">
-                  <h5>: {{ $pasien->riwayat_alergi }}</h5>
-                </div>
+            <div class="mb-2 row">
+              <label for="status_nikah" class="col-sm-3 col-form-label">Status Perkawinan</label>
+              <div class="col-sm-8">
+                <h5>: {{ $pasien->status_nikah }}</h5>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="mb-2 row">
+              <label for="pendidikan_terakhir" class="col-sm-4 col-form-label">Pendidikan Terakhir</label>
+              <div class="col-sm-8">
+                <h5>: {{ $pasien->pendidikan_terakhir }}</h5>
+              </div>
+            </div>
+
+            <div class="mb-2 row">
+              <label for="pekerjaan" class="col-sm-4 col-form-label">Pekerjaan</label>
+              <div class="col-sm-8">
+                <h5>: {{ $pasien->pekerjaan }}</h5>
+              </div>
+            </div>
+
+            <div class="mb-2 row">
+              <label for="kewarganegaraan" class="col-sm-4 col-form-label">Kewarganegaraan</label>
+              <div class="col-sm-8">
+                <h5>: {{ $pasien->kewarganegaraan }}</h5>
+              </div>
+            </div>
+
+            <div class="mb-2 row">
+              <label for="penanggung_jawab" class="col-sm-4 col-form-label">Nama Penanggungjawab</label>
+              <div class="col-sm-8">
+                <h5>: {{ $pasien->penanggung_jawab }}</h5>
+              </div>
+            </div>
+
+            <div class="mb-2 row">
+              <label for="no_telp" class="col-sm-4 col-form-label">No. Telp/HP</label>
+              <div class="col-sm-8">
+                <h5>: {{ $pasien->no_telp }}</h5>                  
+              </div>
+            </div>
+
+            <div class="mb-2 row">
+              <label for="riwayat_penyakit" class="col-sm-4 col-form-label">Riwayat Penyakit</label>
+              <div class="col-sm-8">
+                <h5>: {{ $pasien->riwayat_penyakit }}</h5>
+              </div>
+            </div>
+
+            <div class="mb-2 row">
+              <label for="riwayat_alergi" class="col-sm-4 col-form-label">Riwayat Alergi</label>
+              <div class="col-sm-8">
+                <h5>: {{ $pasien->riwayat_alergi }}</h5>
               </div>
             </div>
           </div>
         </div>
-			</div>
+      </div>
     </div>
 
     <h1 class="h3 mb-3 text-gray-800">Edit Data Profile</h1>

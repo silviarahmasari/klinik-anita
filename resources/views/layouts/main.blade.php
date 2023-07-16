@@ -132,8 +132,8 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Action</h6>
             <a class="collapse-item" href="{{ route('pasien.kunjungan') }}">Pendaftaran Kunjungan</a>
-            <a class="collapse-item" href="{{ route('pasien.profile') }}">Riwayat Kunjungan</a>
-            <a class="collapse-item" href="{{ route('pasien.profile') }}">Riwayat Rawat Inap</a>
+            <a class="collapse-item" href="{{ route('pasien.riwayatKunjungan') }}">Riwayat Kunjungan</a>
+            <a class="collapse-item" href="{{ route('pasien.riwayatRawatInap') }}">Riwayat Rawat Inap</a>
           </div>
         </div>
       </li>
@@ -145,7 +145,7 @@
         <div id="dataRekamMedis" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Action</h6>
-            <a class="collapse-item" href="{{ route('pasien.index') }}">Rekam Medis</a>
+            <a class="collapse-item" href="{{ route('pasien.rekamMedis') }}">Rekam Medis</a>
           </div>
         </div>
       </li>

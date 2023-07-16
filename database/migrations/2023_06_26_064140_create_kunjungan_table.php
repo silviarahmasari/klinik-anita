@@ -15,6 +15,7 @@ class CreateKunjunganTable extends Migration
     {
         Schema::create('kunjungan', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
             $table->date('tgl_kunjungan')->nullable();
             $table->string('nama_lengkap')->nullable();
             $table->string('keluhan')->nullable();
@@ -22,7 +23,11 @@ class CreateKunjunganTable extends Migration
             $table->bigInteger('no_antrian')->nullable();
             $table->bigInteger('status_pembayaran')->nullable()->default(0);
             $table->enum('triase_tujuan', ['Poli Rawat Inap', 'IGD', 'Poli Kandungan'])->nullable();
+            $table->enum('metode_pembayaran', ['Cash', 'Debit'])->nullable();
+            $table->integer('nominal')->nullable();
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

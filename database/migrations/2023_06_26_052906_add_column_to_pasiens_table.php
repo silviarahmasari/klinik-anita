@@ -14,7 +14,6 @@ class AddColumnToPasiensTable extends Migration
     public function up()
     {
         Schema::table('pasiens', function (Blueprint $table) {
-            $table->bigInteger('id_pembayaran')->nullable();
             $table->string('nik')->length(16)->nullable();
             $table->string('tempat_lahir')->nullable();
             $table->string('tanggal_lahir')->nullable();

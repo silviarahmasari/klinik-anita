@@ -9,6 +9,8 @@ use App\Models\Dokter;
 use App\Models\Pasien;
 use App\Models\kunjungan;
 use App\Models\Perjanjian;
+use App\Models\RekamMedis;
+use App\Models\RawatInap;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -177,7 +179,14 @@ class PasienController extends Controller
   }
 
   public function kunjungan() {
-    return view('pasien.kunjungan');
+    $pasien = Pasien::where('user_id', Auth::user()->id)->first();
+    $checkPasien = Pasien::where('user_id', Auth::user()->id)->count();
+    $kunjungan = Kunjungan::where('tgl_kunjungan', '>=', Carbon::now())
+                ->where('user_id', Auth::user()->id)
+                ->orderBy('tgl_kunjungan', 'asc')
+                ->get();
+    // dd($kunjungan);
+    return view('pasien.kunjungan', compact('pasien', 'checkPasien', 'kunjungan'));
   }
 
   public function ambilAntrian() {
@@ -190,8 +199,25 @@ class PasienController extends Controller
     $validatedData = $request->all();
     $kunjungan = kunjungan::where('tgl_kunjungan', $validatedData['tgl_kunjungan'])->count();
     $validatedData['no_antrian'] = $kunjungan+1;
+    $validatedData['user_id'] = Auth::user()->id;
     Kunjungan::create($validatedData);
-    return redirect()->route('home');
+    return redirect()->route('pasien.kunjungan');
+  }
+
+  public function riwayatKunjungan() {
+    $kunjungan = kunjungan::where('user_id', Auth::user()->id)->get();
+    return view('pasien.riwayatKunjungan', compact('kunjungan'));
+  }
+
+  public function riwayatRawatInap() {
+    $rawatInap = RawatInap::with('kamar')->where('user_id', Auth::user()->id)->get();
+    return view('pasien.riwayatRawatInap', compact('rawatInap'));
+  }
+
+  public function rekamMedis() {
+    $rekam_medis_pasien = RekamMedis::with('rekam_medis_pasien', 'rekam_medis_dokter')->get();
+    $pasien = pasien::where('user_id', Auth::user()->id)->first();
+    return view('pasien.rekamMedis', compact('pasien', 'rekam_medis_pasien'));
   }
 
   public function kritikSaran() {

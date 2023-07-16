@@ -51,6 +51,14 @@ class User extends Authenticatable
   }
 
   public function kritikSaran() {
-    return $this->hasOne(kritikSaran::class);
+    return $this->hasMany(kritikSaran::class);
+  }
+
+  public function kunjungan() {
+    return $this->hasMany(kunjungan::class);
+  }
+
+  public function rawatInap() {
+    return $this->hasMany(RawatInap::class);
   }
 }

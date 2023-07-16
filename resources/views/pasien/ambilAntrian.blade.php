@@ -2,19 +2,6 @@
 
 @section('content')
 <style>
-	.input{
-    display: grid;
-    grid-template-columns: 200px 500px;
-  }
-	input{
-		margin-bottom: 10px
-	}
-	select{
-		margin-bottom: 10px
-	}
-	textarea{
-		margin-bottom: 10px
-	}
   input::-webkit-outer-spin-button,
   input::-webkit-inner-spin-button {
   -webkit-appearance: none;
@@ -74,59 +61,70 @@
 					<div class="card-body">
 						<div class="row">
 							<div class="col-md-6">
-								<div class="input">
-									<label for="tgl_kunjungan">Tanggal Kunjungan</label>
-									<input type="date" class="form-control @error('tgl_kunjungan') is-invalid @enderror" name="tgl_kunjungan" id="tgl_kunjungan" value="{{old('tgl_kunjungan')}}">
-									@error('tgl_kunjungan')
-                  <label></label>
-									<span class="invalid-feedback">
-										<strong>{{ $message }}</strong>
-									</span>
-									@enderror
+                <div class="mb-3 row">
+                  <label for="tgl_kunjungan" class="col-sm-4 col-form-label">Tanggal Kunjungan</label>
+                  <div class="col-sm-8">
+                    <input type="date" class="form-control @error('tgl_kunjungan') is-invalid @enderror" name="tgl_kunjungan" id="tgl_kunjungan" value="{{old('tgl_kunjungan')}}">
+                    @error('tgl_kunjungan')
+                    <span class="invalid-feedback">
+                      <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                  </div>
+                </div>
 
-									<label for="nama_lengkap">Nama Lengkap</label>
-									<input type="test" class="form-control @error('nama_lengkap') is-invalid @enderror" name="nama_lengkap" id="nama_lengkap" value="{{$pasien->nama_pasien}}" readonly>
-									@error('nama_lengkap')
-                  <label></label>
-									<span class="invalid-feedback">
-										<strong>{{ $message }}</strong>
-									</span>
-									@enderror
+                <div class="mb-3 row">
+                  <label for="nama_lengkap" class="col-sm-4 col-form-label">Nama Lengkap</label>
+                  <div class="col-sm-8">
+                    <input type="test" class="form-control @error('nama_lengkap') is-invalid @enderror" name="nama_lengkap" id="nama_lengkap" value="{{$pasien->nama_pasien}}" readonly>
+                    @error('nama_lengkap')
+                    <span class="invalid-feedback">
+                      <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                  </div>
+                </div>
 
-									<label for="triase_tujuan">Triase yang dituju</label>
-                  <select class="form-control @error('triase_tujuan') is-invalid @enderror" name="triase_tujuan" id="triase_tujuan">
-                    <option value="" readonly disabled selected>Pilih triase tujuan</option>
-                    <option value="Poli Rawat Inap" {{ old('triase_tujuan') == 'Poli Rawat Inap' ? 'selected' : '' }}>Poli Rawat Inap</option>
-                    <option value="IGD" {{ old('triase_tujuan') == 'IGD' ? 'selected' : '' }}>IGD</option>
-                    <option value="Poli Kandungan" {{ old('triase_tujuan') == 'Poli Kandungan' ? 'selected' : '' }}>Poli Kandungan</option>
-                  </select>
-                  @error('triase_tujuan')
-                  <label></label>
-                  <span class="invalid-feedback">
-                    <strong>{{$message}}</strong>
-                  </span>
-                  @enderror
-								</div>
+                <div class="mb-3 row">
+                  <label for="triase_tujuan" class="col-sm-4 col-form-label">Triase yang dituju</label>
+                  <div class="col-sm-8">
+                    <select class="form-control @error('triase_tujuan') is-invalid @enderror" name="triase_tujuan" id="triase_tujuan">
+                      <option value="" readonly disabled selected>Pilih triase tujuan</option>
+                      <option value="Poli Rawat Inap" {{ old('triase_tujuan') == 'Poli Rawat Inap' ? 'selected' : '' }}>Poli Rawat Inap</option>
+                      <option value="IGD" {{ old('triase_tujuan') == 'IGD' ? 'selected' : '' }}>IGD</option>
+                      <option value="Poli Kandungan" {{ old('triase_tujuan') == 'Poli Kandungan' ? 'selected' : '' }}>Poli Kandungan</option>
+                    </select>
+                    @error('triase_tujuan')
+                    <span class="invalid-feedback">
+                      <strong>{{$message}}</strong>
+                    </span>
+                    @enderror
+                  </div>
+                </div>
 							</div>
               <div class="col-md-6">
-                <div class="input">
-                  <label for="keluhan">Keluhan</label>
-                  <textarea class="form-control @error('keluhan') is-invalid @enderror" name="keluhan" id="keluhan" rows="2">{{old('keluhan')}}</textarea>
-                  @error('keluhan')
-                  <label></label>
-                  <span class="invalid-feedback">
-                    <strong>{{$message}}</strong>
-                  </span>
-                  @enderror
+                <div class="mb-3 row">
+                  <label for="keluhan" class="col-sm-3 col-form-label">Keluhan</label>
+                  <div class="col-sm-8">
+                    <textarea class="form-control @error('keluhan') is-invalid @enderror" name="keluhan" id="keluhan" rows="2">{{old('keluhan')}}</textarea>
+                    @error('keluhan')
+                    <span class="invalid-feedback">
+                      <strong>{{$message}}</strong>
+                    </span>
+                    @enderror
+                  </div>
+                </div>
 
-									<label for="no_telp">No. Telp/HP</label>
-                  <input type="number" class="form-control @error('no_telp') is-invalid @enderror" name="no_telp" id="no_telp" value="{{$pasien->no_telp}}">
-                  @error('no_telp')
-                  <label></label>
-                  <span class="invalid-feedback">
-                    <strong>{{$message}}</strong>
-                  </span>
-                  @enderror
+                <div class="mb-3 row">
+                  <label for="no_telp" class="col-sm-3 col-form-label">No. Telp/HP</label>
+                  <div class="col-sm-8">
+                    <input type="number" class="form-control @error('no_telp') is-invalid @enderror" name="no_telp" id="no_telp" value="{{$pasien->no_telp}}">
+                    @error('no_telp')
+                    <span class="invalid-feedback">
+                      <strong>{{$message}}</strong>
+                    </span>
+                    @enderror
+                  </div>
                 </div>
               </div>
 						</div>

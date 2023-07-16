@@ -10,4 +10,8 @@ class Kunjungan extends Model
     use HasFactory;
     protected $table = 'kunjungan';
     protected $guarded = ['id'];
+
+    public function users() {
+        return $this->belongsTo(User::class);
+    }
 }
