@@ -18,11 +18,11 @@ class User extends Authenticatable
    * @var string[]
    */
   protected $guarded = ['id'];
-  // protected $fillable = [
-  //   'name',
-  //   'email',
-  //   'password',
-  // ];
+  protected $fillable = [
+    'name',
+    'email',
+    'password',
+  ];
 
   /**
    * The attributes that should be hidden for serialization.
@@ -46,4 +46,18 @@ class User extends Authenticatable
   {
     return $this->hasMany(Perjanjian::class);
   }
+<<<<<<< Updated upstream
+=======
+  public function pasiens() {
+    return $this->hasOne(Pasien::class);
+  }
+
+  public function kritikSaran() {
+    return $this->hasOne(kritikSaran::class);
+  }
+  public function dokter_rekam_medis()
+  {
+    return $this->hasMany(RekamMedis::class, 'dokter_id');
+  }
+>>>>>>> Stashed changes
 }

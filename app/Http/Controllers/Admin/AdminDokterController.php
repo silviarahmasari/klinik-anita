@@ -3,9 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\User\UserRequest;
 use App\Http\Requests\Dokter\DokterRequest;
+use App\Models\User;
 use App\Models\Dokter;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class AdminDokterController extends Controller
 {
@@ -39,10 +42,19 @@ class AdminDokterController extends Controller
    * @param  \Illuminate\Http\Request  $request
    * @return \Illuminate\Http\Response
    */
-  public function store(DokterRequest $request)
+  public function store(DokterRequest  $reqDokter, UserRequest $reqUser)
   {
-    $validatedData = $request->all();
-    $dokter = Dokter::create($validatedData);
+    
+    $validatedDataUser = $reqUser->all();
+    $validatedDataUser['role'] = "dokter";
+    $validatedDataUser['isNewPassword'] = 0;
+    $validatedDataUser['password'] =  Hash::make($reqUser->name);
+    $user = User::create($validatedDataUser);
+
+    $validatedDataDokter = $reqDokter->all();
+    $validatedDataDokter['user_id'] =  $user->id;
+    Dokter::create($validatedDataDokter);
+
     return redirect()->route('admin-dokter.index');
   }
 

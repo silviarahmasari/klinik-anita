@@ -148,6 +148,50 @@ class PasienController extends Controller
   }
 
   public function profile() {
+<<<<<<< Updated upstream
     return view('pasien.index');
+=======
+    $pasien = pasien::where('user_id', Auth::user()->id)->first();
+    // dd($pasien);
+    return view('pasien.profile', compact('pasien'));
+  }
+
+  public function profileInsert(PasienRequest $request, Pasien $pasien) {
+    $validatedData = $request->all();
+    $validatedData['user_id'] = Auth::user()->id;
+    $validatedData['tgl_datang'] = Carbon::now();
+    // dd($validatedData);
+    Pasien::create($validatedData);
+    return redirect()->route('pasien.profile');    
+  }
+
+  public function kunjungan() {
+    // dd("test");
+    $pasien = Pasien::where('user_id', Auth::user()->id)->first();
+    $checkPasien = Pasien::where('user_id', Auth::user()->id)->count();
+    return view('pasien.kunjungan', compact('pasien', 'checkPasien'));
+  }
+
+  public function kunjunganInsert(KunjunganRequest $request) {
+    $validatedData = $request->all();
+    $kunjungan = kunjungan::where('tgl_kunjungan', $validatedData['tgl_kunjungan'])->count();
+    $validatedData['no_antrian'] = $kunjungan+1;
+    Kunjungan::create($validatedData);
+    return redirect()->route('home');
+  }
+
+  public function kritikSaran() {
+    $checkPasien = Pasien::where('user_id', Auth::user()->id)->count();
+    return view('pasien.kritikSaran', compact('checkPasien'));
+  }
+
+  public function kritikSaranInsert(kritikSaranRequest $request) {
+    $validatedData = $request->all();
+    $validatedData['user_id'] = Auth::user()->id;
+    $validatedData['nama_pelanggan'] = Auth::user()->name;
+    dd($validatedData);
+    kritikSaran::create($validatedData);
+    return redirect()->route('home');
+>>>>>>> Stashed changes
   }
 }

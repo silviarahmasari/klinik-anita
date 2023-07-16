@@ -15,10 +15,13 @@ class CreateDoktersTable extends Migration
   {
     Schema::create('dokters', function (Blueprint $table) {
       $table->bigIncrements('id');
+      $table->unsignedBigInteger('user_id');
       $table->string('nama_dokter');
       $table->string('spesialisasi_dokter');
       $table->string('alamat_dokter');
       $table->timestamps();
+      
+      $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
     });
   }
 

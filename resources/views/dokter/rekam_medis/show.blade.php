@@ -164,7 +164,7 @@
                 <th>Diagnosa</th>
                 <th>Terapi</th>
                 <th>Obat</th>
-                <th>Nama Dokter</th>
+                {{-- <th>Nama Dokter</th> --}}
               </tr>
             </thead>
             <tfoot>
@@ -174,7 +174,7 @@
                 <th>Diagnosa</th>
                 <th>Terapi</th>
                 <th>Obat</th>
-                <th>Nama Dokter</th>
+                {{-- <th>Nama Dokter</th> --}}
               </tr>
             </tfoot>
             <tbody>
@@ -185,7 +185,7 @@
                 <td>{{ $rekam_medis->diagnosa }}</td>
                 <td>{{ $rekam_medis->terapi }}</td>
                 <td>{{ $rekam_medis->obat }}</td>
-                <td>{{ $rekam_medis->rekam_medis_dokter->nama_dokter }}</td>
+                {{-- <td>{{ $rekam_medis->rekam_medis_dokter->nama_dokter }}</td> --}}
               </tr>
               @endforeach
             </tbody>

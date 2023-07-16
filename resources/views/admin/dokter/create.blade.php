@@ -53,8 +53,28 @@
           <div class="form-group">
             <label for="nama_dokter">Nama Dokter</label>
             <input type="text" class="form-control @error('nama_dokter') is-invalid @enderror" id="nama_dokter"
-              name="nama_dokter" placeholder="Nama Dokter" value="{{ old('nama_dokter') }}">
+            name="nama_dokter" placeholder="Nama Dokter" value="{{ old('nama_dokter') }}">
             @error('nama_dokter')
+            <span class="invalid-feedback" role="alert">
+              <strong>{{ $message }}</strong>
+            </span>
+            @enderror
+          </div>
+          <div class="form-group">
+            <label for="name">Username</label>
+            <input type="text" class="form-control @error('name') is-invalid @enderror" id="name"
+              name="name" placeholder="Username" value="{{ old('name') }}">
+            @error('name')
+            <span class="invalid-feedback" role="alert">
+              <strong>{{ $message }}</strong>
+            </span>
+            @enderror
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="text" class="form-control @error('email') is-invalid @enderror" id="email"
+              name="email" placeholder="Email" value="{{ old('email') }}">
+            @error('email')
             <span class="invalid-feedback" role="alert">
               <strong>{{ $message }}</strong>
             </span>
