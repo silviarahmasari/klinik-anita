@@ -50,6 +50,8 @@
                 <th>No. Antrian</th>
                 <th>Keluhan</th>
                 <th>No Telp</th>
+                <th>Nominal</th>
+                <th>Metode Pembayaran</th>
                 <th>Pembayaran</th>
                 <th>Actions</th>
               </tr>
@@ -61,6 +63,8 @@
                 <th>No. Antrian</th>
                 <th>Keluhan</th>
                 <th>No Telp</th>
+                <th>Nominal</th>
+                <th>Metode Pembayaran</th>
                 <th>Pembayaran</th>
                 <th>Actions</th>
               </tr>
@@ -73,10 +77,12 @@
                 <td>{{ $item->no_antrian }}</td>
                 <td>{{ $item->keluhan }}</td>
                 <td>{{ $item->no_telp }}</td>
+                <td>Rp{{ number_format($item->nominal) }}</td>
+                <td>{{ $item->metode_pembayaran }}</td>
                 <td>@if($item->status_pembayaran === 0) Belum Selesai @else Selesai @endif</td>
                 <td>
-                    <span><a href="" class="btn btn-warning">Verifikasi</a></span>
-                    <form action="" method="post">
+                    <span><a href="{{ route('kunjungan.edit', $item->id) }}" class="btn btn-warning">Verifikasi</a></span>
+                    <form action="{{ route('kunjungan.destroy', $item->id) }}" method="post">
                         @method('delete')
                         @csrf
                         <span><button onclick="return confirm('Are you sure?')" class="btn btn-danger d-block"

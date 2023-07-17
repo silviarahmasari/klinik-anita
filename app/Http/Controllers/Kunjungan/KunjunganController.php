@@ -63,7 +63,9 @@ class KunjunganController extends Controller
      */
     public function edit($id)
     {
-        //
+        $kunjungan = Kunjungan::FindOrFail($id)->first();
+
+        return view('admin.kunjungan.edit', compact('kunjungan'));
     }
 
     /**
@@ -75,7 +77,13 @@ class KunjunganController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $kunjungan = Kunjungan::FindOrFail($id);
+        $kunjungan->nominal = $request->nominal;
+        $kunjungan->metode_pembayaran = $request->metode_pembayaran;
+        $kunjungan->status_pembayaran = $request->status_pembayaran;
+        $kunjungan->save();
+
+        return redirect()->route('kunjungan.index');
     }
 
     /**
@@ -86,6 +94,9 @@ class KunjunganController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $kunjungan = Kunjungan::FindOrFail($id);
+        $kunjungan->delete();
+
+        return redirect()->route('kunjungan.index');
     }
 }
