@@ -49,6 +49,8 @@
       </div>
       <div class="card-body">
         <form method="POST" action="{{ route('admin-dokter.store') }}" enctype="multipart/form-data">
+          <input type="hidden" id="role" name="role" value="dokter">
+          <input type="hidden" id="isNewPassword" name="isNewPassword" value=0>
           @csrf
           <div class="form-group">
             <label for="nama_dokter">Nama Dokter</label>

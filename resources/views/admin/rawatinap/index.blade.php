@@ -53,7 +53,6 @@
           <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
             <thead>
               <tr>
-                <th>No. RM</th>
                 <th>Nama Pasien</th>
                 <th>Kamar</th>
                 <th>Check In</th>
@@ -64,7 +63,6 @@
             </thead>
             <tfoot>
               <tr>
-                <th>No. RM</th>
                 <th>Nama Pasien</th>
                 <th>Kamar</th>
                 <th>Check In</th>
@@ -76,7 +74,6 @@
             <tbody>
               @foreach ($rawat as $data)
               <tr>
-                <td>{{ $data->no_rm }}</td>
                 <td>{{ $data->nama_pasien }}</td>
                 <td>{{ $data->nama_kamar }}</td>
                 <td>{{ $data->check_in }}</td>

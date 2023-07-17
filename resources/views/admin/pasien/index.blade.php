@@ -52,7 +52,6 @@
           <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
             <thead>
               <tr>
-                <th>No. RM</th>
                 <th>Nama Lengkap</th>
                 <th>NIK KTP</th>
                 <th>Tempat, Tanggal Lahir</th>
@@ -63,7 +62,6 @@
             </thead>
             <tfoot>
               <tr>
-                <th>No. RM</th>
                 <th>Nama Lengkap</th>
                 <th>NIK KTP</th>
                 <th>Tempat, Tanggal Lahir</th>
@@ -75,7 +73,6 @@
             <tbody>
               @foreach ($pasien as $item)
               <tr>
-                <td>{{ $item->no_rm }}</td>
                 <td>{{ $item->nama_pasien }}</td>
                 <td>{{ $item->nik }}</td>
                 <td>{{ $item->dob }}</td>
