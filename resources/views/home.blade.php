@@ -60,10 +60,10 @@
               <div class="col mr-2">
                 <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                   Riwayat Kunjungan</div>
-                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $dokter }}</div>
+                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $kunjungan }}</div>
               </div>
               <div class="col-auto">
-                <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                <i class="fas fa-clock-rotate-left fa-2x text-gray-300"></i>
               </div>
             </div>
           </div>
@@ -93,7 +93,7 @@
                 @endif
               </div>
               <div class="col-auto">
-                <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                <i class="fas fa-hospital-user fa-2x text-gray-300"></i>
               </div>
             </div>
           </div>
@@ -117,7 +117,7 @@
                 </div>
               </div>
               <div class="col-auto">
-                <i class="fas fa-2x fa-prescription-bottle-alt"></i>
+                <i class="fas fa-pills fa-2x text-gray-300"></i>
               </div>
             </div>
           </div>

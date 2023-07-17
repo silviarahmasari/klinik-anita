@@ -180,12 +180,12 @@ class PasienController extends Controller
 
   public function kunjungan() {
     $pasien = Pasien::where('user_id', Auth::user()->id)->first();
+    $date = Carbon::today()->toDateString();
     $checkPasien = Pasien::where('user_id', Auth::user()->id)->count();
-    $kunjungan = Kunjungan::where('tgl_kunjungan', '>=', Carbon::now())
+    $kunjungan = Kunjungan::where('tgl_kunjungan', '>=', $date)
                 ->where('user_id', Auth::user()->id)
                 ->orderBy('tgl_kunjungan', 'asc')
                 ->get();
-    // dd($kunjungan);
     return view('pasien.kunjungan', compact('pasien', 'checkPasien', 'kunjungan'));
   }
 
