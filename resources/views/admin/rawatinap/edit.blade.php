@@ -48,24 +48,29 @@
           @csrf
           <div class="row">
             <div class="col">
-              <div class="form-group">
+              {{-- <div class="form-group">
                 <label for="no_rm">No. Rekam Medis</label>
                 <input type="text" class="form-control" id="no_rm"
                   name="no_rm" placeholder="Nomor Rekam Medis" value="{{ $rawat->no_rm }}">
-              </div>
+              </div> --}}
               <div class="form-group">
                 <label for="nama_pasien">Nama Lengkap Pasien</label>
                 <input type="text" id="nama_pasien" class="form-control"
-                  id="nama_pasien" name="nama_pasien" placeholder="Nama Lengkap Pasien" value="{{ $rawat->nama_pasien }}">
+                  id="nama_pasien" name="nama_pasien" placeholder="Nama Lengkap Pasien" value="{{ $rawat->nama_pasien }}" readonly>
               </div>
               <div class="form-group">
+                <label for="kamar">Kamar</label>
+                <input type="text" id="kamar" class="form-control"
+                  id="kamar" name="kamar" placeholder="Tanggal" value="{{ $rawat->kamar }}">
+              </div>
+              {{-- <div class="form-group">
                 <label for="tanggal">Kamar</label>
                 <select id="id"  class="form-control" name="id_kamar" value="{{ $rawat->id_kamar }}">
                   @foreach ($kamar as $key)
                     <option value="{{ $key->id}}" {{ old('id_kamar') == $key->id ? 'selected' : '' }}selected>{{$key->nama_kamar}}</option>                    
                   @endforeach 
-              </select>
-              </div>
+                </select>
+              </div> --}}
             </div>
             <div class="col">
               <div class="form-group">

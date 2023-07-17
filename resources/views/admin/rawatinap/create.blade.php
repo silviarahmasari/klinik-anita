@@ -48,22 +48,12 @@
           @csrf
           <div class="row">
             <div class="col">
-              <div class="form-group">
-                <label for="no_rm">No. Rekam Medis</label>
-                <input type="text" class="form-control" id="no_rm"
-                  name="no_rm" placeholder="Nomor Rekam Medis">
-                @error('no_rm')
-                <span class="invalid-feedback" role="alert">
-                  <strong>{{ $message }}</strong>
-                </span>
-                @enderror
-              </div>
-              <div class="form-group">
+              {{-- <div class="form-group">
                 <label for="nama_pasien">Nama Lengkap Pasien</label>
                 <input type="text" id="nama_pasien" class="form-control"
                   id="nama_pasien" name="nama_pasien" placeholder="Nama Lengkap Pasien">
-              </div>
-              <div class="form-group">
+              </div> --}}
+              {{-- <div class="form-group">
                 <label for="tanggal">Kamar</label>
                 <select id="id"  class="form-control" name="id_kamar" required>
                   <option value="" disabled selected>Pilih kamar Pasien</option>
@@ -74,14 +64,45 @@
                       <option value="{{ $key->id}}" >{{ $key->nama_kamar}}</option>
                     @endif
                   @endforeach
-              </select>
+                </select>
+              </div> --}}
+              <div class="form-group">
+                <label for="pasien_id">Nama Pasien</label>
+                <select class="form-control @error('pasien_id') is-invalid @enderror" id="pasien_id" name="pasien_id">
+                  <option value=""> Pilih salah satu</option>
+                  @foreach ($pasiens as $pasien)
+                  <option value="{{ $pasien->id  }}">
+                    {{ $pasien->nama_pasien }}
+                  </option>
+                  @endforeach
+                </select>
+                @error('pasien_id')
+                <span class="invalid-feedback" role="alert">
+                  <strong>{{ $message }}</strong>
+                </span>
+                @enderror
+              </div>
+              <div class="form-group">
+                <label for="kamar">Kamar</label>
+                <input type="text" id="kamar" class="form-control @error('kamar') is-invalid @enderror"
+                  id="kamar" name="kamar" placeholder="Nama Kamar">
+                @error('kamar')
+                <span class="invalid-feedback" role="alert">
+                  <strong>{{ $message }}</strong>
+                </span>
+                @enderror
               </div>
             </div>
             <div class="col">
               <div class="form-group">
                 <label for="check_in">Check In</label>
-                <input type="date" id="check_in" class="form-control"
+                <input type="date" id="check_in" class="form-control @error('check_in') is-invalid @enderror"
                   id="check_in" name="check_in" placeholder="Tanggal" value="{{ old('check_in') }}">
+                @error('check_in')
+                <span class="invalid-feedback" role="alert">
+                  <strong>{{ $message }}</strong>
+                </span>
+                @enderror
               </div>
               <div class="form-group">
                 <label for="check_out">Check Out</label>

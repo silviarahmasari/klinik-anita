@@ -48,9 +48,9 @@
           <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
             <thead>
               <tr>
+                <th>No. Antrian</th>
                 <th>Tanggal Kunjungan</th>
                 <th>Nama Lengkap</th>
-                <th>No. Antrian</th>
                 <th>Keluhan</th>
                 <th>No Telp</th>
                 <th>Pembayaran</th>
@@ -58,9 +58,9 @@
             </thead>
             <tfoot>
               <tr>
+                <th>No. Antrian</th>
                 <th>Tanggal Kunjungan</th>
                 <th>Nama Lengkap</th>
-                <th>No. Antrian</th>
                 <th>Keluhan</th>
                 <th>No Telp</th>
                 <th>Pembayaran</th>
@@ -69,12 +69,12 @@
             <tbody>
               @foreach ($kunjungan as $item)
               <tr>
+                <td>{{ $item->no_antrian }}</td>
                 <td>{{ $item->tgl_kunjungan }}</td>
                 <td>{{ $item->nama_lengkap }}</td>
-                <td>{{ $item->no_antrian }}</td>
                 <td>{{ $item->keluhan }}</td>
                 <td>{{ $item->no_telp }}</td>
-                <td>@if($item->status_pembayaran === 0) Belum Selesai @else Selesai @endif</td>
+                <td>@if($item->status_pembayaran === 0) <span class="badge badge-danger">Belum Terbayar</span> @else <span class="badge badge-success">Selesai</span> @endif</td>
               </tr>
               @endforeach
             </tbody>

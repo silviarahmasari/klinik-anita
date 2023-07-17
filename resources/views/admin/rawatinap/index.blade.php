@@ -57,6 +57,8 @@
                 <th>Kamar</th>
                 <th>Check In</th>
                 <th>Check Out</th>
+                <th>Nominal</th>
+                <th>Metode Pembayaran</th>
                 <th>Status Pembayaran</th>
                 <th>Actions</th>
               </tr>
@@ -67,6 +69,8 @@
                 <th>Kamar</th>
                 <th>Check In</th>
                 <th>Check Out</th>
+                <th>Nominal</th>
+                <th>Metode Pembayaran</th>
                 <th>Status Pembayaran</th>
                 <th>Actions</th>
               </tr>
@@ -75,14 +79,16 @@
               @foreach ($rawat as $data)
               <tr>
                 <td>{{ $data->nama_pasien }}</td>
-                <td>{{ $data->nama_kamar }}</td>
+                <td>{{ $data->kamar }}</td>
                 <td>{{ $data->check_in }}</td>
                 <td>{{ $data->check_out }}</td>
+                <td>Rp{{ number_format($data->nominal) }}</td>
+                <td>{{ $data->metode_pembayaran }}</td>
                 <td>{{ $data->status_pembayaran }}</td>
                 <td>
-                  <span><a data-toggle="modal" data-target="#ModalConfirmation-{{$data->id_rawat}}" class="btn btn-primary">Verify</a></span>
-                  <span><a href="{{ route('rawatinap.edit', $data->id_rawat) }}" class="btn btn-warning">Edit</a></span>
-                  <form action="{{ route('rawatinap.destroy', $data->id_rawat) }}" method="post">
+                  <span><a data-toggle="modal" data-target="#ModalConfirmation-{{$data->id}}" class="btn btn-primary">Verify</a></span>
+                  <span><a href="{{ route('rawatinap.edit', $data->id) }}" class="btn btn-warning">Edit</a></span>
+                  <form action="{{ route('rawatinap.destroy', $data->id) }}" method="post">
                     @method('delete')
                     @csrf
                     <span><button onclick="return confirm('Are you sure?')" class="btn btn-danger d-block"
@@ -104,7 +110,7 @@
 
 @foreach ($rawat as $data)
 <!-- Modal -->
-<div class="modal fade" id="ModalConfirmation-{{$data->id_rawat}}" aria-hidden="true">
+<div class="modal fade" id="ModalConfirmation-{{$data->id}}" aria-hidden="true">
   <div class="modal-dialog">
       <div class="modal-content">
           <div class="modal-header">
@@ -113,19 +119,26 @@
                   <span aria-hidden="true">&times;</span>
               </button>
           </div>
+          <form action="{{ URL::to('rawatinap/verif/' . $data->id) }}" method="POST" enctype="multipart/form-data">
+            @csrf
           <div class="modal-body">
-              Apakah Pasien Sudah Melakukan Pembayaran?
+            Nominal Bayar:
+            <input type="number" class="form-control" name="nominal" required>
+            Metode Pembayaran
+            <select class="form-control" name="metode_pembayaran" id="metode_pembayaran" required>
+              <option value="Cash">Cash</option>
+              <option value="Debit">Debit</option>
+            </select><br>
+            Apakah Pasien sudah melakukan pembayaran sesuai dengan nominal di atas?
           </div>
           <div class="modal-footer">
-            <form action="{{ URL::to('rawatinap/verif/' . $data->id_rawat) }}" method="POST" enctype="multipart/form-data">
-              @csrf
-            <div class="form-group row col-auto">
+            <div class="form-group">
                 <button class="btn btn-success" type="submit"><input class="btn btn-success" value="selesai terbayar" id="statusverif" name="status_pembayaran" hidden>Sudah</button>
             </div>
             </form>
-            <form action="{{ URL::to('rawatinap/verif/' . $data->id_rawat) }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ URL::to('rawatinap/verif/' . $data->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
-            <div class="form-group row col-auto">
+            <div class="form-group row col-auto my-2">
                 <button class="btn btn-danger" type="submit"><input class="btn btn-danger" value="belum terbayar" id="statusunverif"name="status_pembayaran" hidden>Belum</button>
             </div>
             </form>

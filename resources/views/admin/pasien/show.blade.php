@@ -36,11 +36,11 @@
   <!-- Begin Page Content -->
   <div class="container-fluid">
     <!-- Page Heading -->
-    <h1 class="h3 mb-3 font-weight-bold text-gray-800">Rekam Medis</h1>
+    <h1 class="h3 mb-3 font-weight-bold text-gray-800">Profil Pasien</h1>
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
       <div class="card-header py-3">
-        <h5 class="font-weight-bold text-primary">ID Pasien : {{ $rekam_medis_pasien[0]->pasien_id }}</h5>
+        <h5 class="font-weight-bold text-primary">ID Pasien : {{ $pasien->pasien_id }}</h5>
       </div>
       <div class="card-body">
         <h5><strong>Profil Pasien</strong></h5>
@@ -51,7 +51,7 @@
                 <label>Nama Lengkap</label>
               </div>
               <div class="col col-6">
-                <span>: {{ $rekam_medis_pasien[0]->rekam_medis_pasien->nama_pasien }}</span>
+                <span>: {{ $pasien->nama_pasien }}</span>
               </div>
             </div>
             <div class="row">
@@ -59,7 +59,7 @@
                 <label>NIK KTP</label>
               </div>
               <div class="col col-6">
-                <span>: {{ $rekam_medis_pasien[0]->rekam_medis_pasien->nik }}</span>
+                <span>: {{ $pasien->nik }}</span>
               </div>
             </div>
             <div class="row">
@@ -67,7 +67,7 @@
                 <label>Tempat, Tanggal Lahir</label>
               </div>
               <div class="col col-6">
-                <span>: {{ $rekam_medis_pasien[0]->rekam_medis_pasien->tempat_lahir }}@if($rekam_medis_pasien[0]->rekam_medis_pasien->tanggal_lahir), {{ $rekam_medis_pasien[0]->rekam_medis_pasien->tanggal_lahir }}@endif</span>
+                <span>: {{ $pasien->tempat_lahir }}@if($pasien->tanggal_lahir), {{ $pasien->tanggal_lahir }}@endif</span>
               </div>
             </div>
             <div class="row">
@@ -75,7 +75,7 @@
                 <label>Jenis Kelamin</label>
               </div>
               <div class="col col-6">
-                <span>: {{ $rekam_medis_pasien[0]->rekam_medis_pasien->gender }}</span>
+                <span>: {{ $pasien->gender }}</span>
               </div>
             </div>
             <div class="row">
@@ -83,7 +83,7 @@
                 <label>Alamat Lengkap</label>
               </div>
               <div class="col col-6">
-                <span>: {{ $rekam_medis_pasien[0]->rekam_medis_pasien->alamat_pasien }}</span>
+                <span>: {{ $pasien->alamat_pasien }}</span>
               </div>
             </div>
             <div class="row">
@@ -91,7 +91,7 @@
                 <label>Agama</label>
               </div>
               <div class="col col-6">
-                <span>: {{ $rekam_medis_pasien[0]->rekam_medis_pasien->agama }}</span>
+                <span>: {{ $pasien->agama }}</span>
               </div>
             </div>
             <div class="row">
@@ -99,7 +99,7 @@
                 <label>Status Perkawinan</label>
               </div>
               <div class="col col-6">
-                <span>: {{ $rekam_medis_pasien[0]->rekam_medis_pasien->status_nikah }}</span>
+                <span>: {{ $pasien->status_nikah }}</span>
               </div>
             </div>
           </div>
@@ -109,7 +109,7 @@
                 <label>Pendidikan Terakhir</label>
               </div>
               <div class="col col-6">
-                <span>: {{ $rekam_medis_pasien[0]->rekam_medis_pasien->pendidikan_terakhir }}</span>
+                <span>: {{ $pasien->pendidikan_terakhir }}</span>
               </div>
             </div>
             <div class="row">
@@ -117,7 +117,7 @@
                 <label>Pekerjaan</label>
               </div>
               <div class="col col-6">
-                <span>: {{ $rekam_medis_pasien[0]->rekam_medis_pasien->pekerjaan }}</span>
+                <span>: {{ $pasien->pekerjaan }}</span>
               </div>
             </div>
             <div class="row">
@@ -125,7 +125,7 @@
                 <label>Kewarganegaraan</label>
               </div>
               <div class="col col-6">
-                <span>: {{ $rekam_medis_pasien[0]->rekam_medis_pasien->kewarganegaraan }}</span>
+                <span>: {{ $pasien->kewarganegaraan }}</span>
               </div>
             </div>
             <div class="row">
@@ -133,7 +133,7 @@
                 <label>Penanggung Jawab</label>
               </div>
               <div class="col col-6">
-                <span>: {{ $rekam_medis_pasien[0]->rekam_medis_pasien->penanggung_jawab }}</span>
+                <span>: {{ $pasien->penanggung_jawab }}</span>
               </div>
             </div>
             <div class="row">
@@ -141,7 +141,7 @@
                 <label>No. Telp/HP</label>
               </div>
               <div class="col col-6">
-                <span>: {{ $rekam_medis_pasien[0]->rekam_medis_pasien->no_telp }}</span>
+                <span>: {{ $pasien->no_telp }}</span>
               </div>
             </div>
             <div class="row">
@@ -149,7 +149,7 @@
                 <label>Riwayat Penyakit</label>
               </div>
               <div class="col col-6">
-                <span>: {{ $rekam_medis_pasien[0]->rekam_medis_pasien->riwayat_penyakit }}</span>
+                <span>: {{ $pasien->riwayat_penyakit }}</span>
               </div>
             </div>
             <div class="row">
@@ -157,48 +157,10 @@
                 <label>Riwayat Alergi</label>
               </div>
               <div class="col col-6">
-                <span>: {{ $rekam_medis_pasien[0]->rekam_medis_pasien->riwayat_alergi }}</span>
+                <span>: {{ $pasien->riwayat_alergi }}</span>
               </div>
             </div>
           </div>
-        </div>
-        <hr style="height:2px;border-width:0;color:gray;background-color:gray">
-        <h5><strong>Form Pemeriksaan Dokter</strong></h5>
-        <div class="table-responsive">
-          <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-            <thead>
-              <tr>
-                <th>Tgl Pemeriksaan</th>
-                <th>Anamnesa/Pemeriksaan Medis</th>
-                <th>Diagnosa</th>
-                <th>Terapi</th>
-                <th>Obat</th>
-                {{-- <th>Nama Dokter</th> --}}
-              </tr>
-            </thead>
-            <tfoot>
-              <tr>
-                <th>Tgl Pemeriksaan</th>
-                <th>Anamnesa/Pemeriksaan Medis</th>
-                <th>Diagnosa</th>
-                <th>Terapi</th>
-                <th>Obat</th>
-                {{-- <th>Nama Dokter</th> --}}
-              </tr>
-            </tfoot>
-            <tbody>
-              @foreach ($rekam_medis_pasien as $rekam_medis)
-              <tr>
-                <td>{{ $rekam_medis->tgl_pemeriksaan_medis }}</td>
-                <td>{{ $rekam_medis->anamnesa_pemeriksaan_medis }}</td>
-                <td>{{ $rekam_medis->diagnosa }}</td>
-                <td>{{ $rekam_medis->terapi }}</td>
-                <td>{{ $rekam_medis->obat }}</td>
-                {{-- <td>{{ $rekam_medis->rekam_medis_dokter->nama_dokter }}</td> --}}
-              </tr>
-              @endforeach
-            </tbody>
-          </table>
         </div>
       </div>
     </div>

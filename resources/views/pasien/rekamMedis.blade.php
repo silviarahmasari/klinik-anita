@@ -51,6 +51,9 @@
   <div class="container-fluid">
     <!-- Page Heading -->
     <h1 class="h3 mb-3 text-gray-800">Data Rekam Medis</h1>
+    @if($checkPasien == 0 && Auth::user()->role == 'pasien')
+      <span style="color: #F23E3E">Silahkan lengkapi data diri anda terlebih dahulu</span>
+    @else
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
       <div class="card-header py-3">
@@ -199,6 +202,7 @@
         </div>
       </div>
     </div>
+    @endif
   </div>
   <!-- /.container-fluid -->
 </div>

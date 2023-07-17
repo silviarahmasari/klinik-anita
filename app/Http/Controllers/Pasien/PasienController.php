@@ -11,6 +11,7 @@ use App\Models\kunjungan;
 use App\Models\Perjanjian;
 use App\Models\RekamMedis;
 use App\Models\RawatInap;
+use App\Models\kritikSaran;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -18,6 +19,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Obat;
 use Illuminate\Support\Facades\App;
 use PDF;
+use DB;
 
 class PasienController extends Controller
 {
@@ -30,11 +32,17 @@ class PasienController extends Controller
   {
     if (Auth::user()->role == 'dokter') {
       // $pasien = Pasien::with(['dokter'])->get();
-      $pasien = Dokter::with('pasiens')->where('nama_dokter', Auth::user()->name)->get()->collect();
+      $dokter = Dokter::where('user_id', Auth::user()->id)->first();
+      $pasiens = DB::table('pasiens')
+      ->join('rekam_medis', 'rekam_medis.pasien_id', '=', 'pasiens.id')
+      ->where('rekam_medis.dokter_id', $dokter->id)
+      ->groupBy('pasiens.id')
+      ->select('pasiens.*')
+      ->get();
       $obat = Obat::with('pasien')->get();
       // $
       $data = [
-        'pasiens' => $pasien,
+        'pasiens' => $pasiens,
         'obats' => $obat
       ];
 
@@ -88,6 +96,10 @@ class PasienController extends Controller
     $data = [
       'pasien' => $pasien
     ];
+
+    if (Auth::user()->role == 'dokter') {
+      return view('dokter.pasien.show', $data);
+    }
     return view('dokter.show', $data);
   }
 
@@ -210,14 +222,15 @@ class PasienController extends Controller
   }
 
   public function riwayatRawatInap() {
-    $rawatInap = RawatInap::with('kamar')->where('user_id', Auth::user()->id)->get();
+    $rawatInap = RawatInap::where('user_id', Auth::user()->id)->get();
     return view('pasien.riwayatRawatInap', compact('rawatInap'));
   }
 
   public function rekamMedis() {
     $rekam_medis_pasien = RekamMedis::with('rekam_medis_pasien', 'rekam_medis_dokter')->get();
     $pasien = pasien::where('user_id', Auth::user()->id)->first();
-    return view('pasien.rekamMedis', compact('pasien', 'rekam_medis_pasien'));
+    $checkPasien = Pasien::where('user_id', Auth::user()->id)->count();
+    return view('pasien.rekamMedis', compact('pasien', 'rekam_medis_pasien', 'checkPasien'));
   }
 
   public function kritikSaran() {

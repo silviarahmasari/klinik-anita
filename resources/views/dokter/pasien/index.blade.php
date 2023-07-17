@@ -56,29 +56,35 @@
             <thead>
               <tr>
                 <th>Nama Pasien</th>
+                <th>NIK</th>
+                <th>Tempat, Tanggal Lahir</th>
+                <th>Jenis Kelamin</th>
                 <th>Alamat Pasien</th>
-                <th>Tanggal Berobat</th>
-                <th>Keluhan</th>
+                <th>Actions</th>
               </tr>
             </thead>
             <tfoot>
               <tr>
                 <th>Nama Pasien</th>
+                <th>NIK</th>
+                <th>Tempat, Tanggal Lahir</th>
+                <th>Jenis Kelamin</th>
                 <th>Alamat Pasien</th>
-                <th>Tanggal Berobat</th>
-                <th>Keluhan</th>
+                <th>Actions</th>
               </tr>
             </tfoot>
             <tbody>
               @foreach ($pasiens as $pasien)
-              @foreach ($pasien->pasiens as $p)
               <tr>
-                <td>{{ $p->nama_pasien }}</td>
-                <td>{{ $p->alamat_pasien }}</td>
-                <td>{{ $p->tgl_datang }}</td>
-                <td>{{ $p->keluhan_pasien }}</td>
+                <td>{{ $pasien->nama_pasien }}</td>
+                <td>{{ $pasien->nik }}</td>
+                <td>{{ $pasien->tempat_lahir }}, {{ \Carbon\Carbon::parse($pasien->tanggal_lahir)->format('d/m/Y') }}</td>
+                <td>{{ $pasien->nik }}</td>
+                <td>{{ $pasien->gender }}</td>
+                <td>
+                  <span><a href="{{ route('pasien.show', $pasien->id) }}" class="btn btn-info">Detail</a></span>
+                </td>
               </tr>
-              @endforeach
               @endforeach
             </tbody>
           </table>

@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\RekamMedis;
+namespace App\Http\Requests\RawatInap;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class RekamMedisRequest extends FormRequest
+class RawatInapRequest extends FormRequest
 {
   /**
    * Determine if the user is authorized to make this request.
@@ -25,9 +25,9 @@ class RekamMedisRequest extends FormRequest
   {
     return [
       'pasien_id' => 'required',
-      'anamnesa_pemeriksaan_medis' => 'required',
-      'diagnosa' => 'required',
-      'tgl_pemeriksaan_medis' => 'required',
+      'check_in' => 'required',
+      // 'check_out' => 'required',
+      'kamar' => 'required',
     ];
   }
 }

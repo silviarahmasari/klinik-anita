@@ -16,14 +16,16 @@ class CreateRawatInapTable extends Migration
         Schema::create('rawat_inap', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
-            $table->bigInteger('id_kamar')->unsigned();
-            $table->string('no_rm');
+            // $table->bigInteger('id_kamar')->unsigned();
+            $table->string('kamar');
             $table->string('nama_pasien');
             $table->date('check_in');
-            $table->date('check_out');
+            $table->date('check_out')->nullable();
+            $table->integer('nominal')->nullable();
+            $table->enum('metode_pembayaran', ['Cash', 'Debit'])->nullable();
             $table->enum('status_pembayaran', ['selesai terbayar', 'belum terbayar'])->default('belum terbayar');
             $table->timestamps();
-            $table->foreign('id_kamar')->references('id')->on('kamar')->onDelete('cascade');
+            // $table->foreign('id_kamar')->references('id')->on('kamar')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }

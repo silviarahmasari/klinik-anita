@@ -10,6 +10,7 @@ use App\Http\Controllers\Obat\ObatController;
 use App\Http\Controllers\Pasien\PasienController;
 use App\Http\Controllers\Perjanjian\PerjanjianController;
 use App\Http\Controllers\Pengumuman\PengumumanController;
+use App\Http\Controllers\Kamar\KamarController;
 use App\Http\Controllers\RawatInap\RawatInapController;
 use App\Http\Controllers\Kunjungan\KunjunganController; 
 use App\Http\Controllers\RekamMedis\RekamMedisController; 
@@ -59,6 +60,7 @@ Route::resource('obat', ObatController::class)->middleware('checkRole:dokter,adm
 Route::resource('admin-dokter', AdminDokterController::class)->middleware('checkRole:admin,dokter');
 Route::resource('admin-pasien', AdminPasienController::class)->middleware('checkRole:admin');
 Route::resource('pengumuman', PengumumanController::class)->middleware('checkRole:admin');
+Route::resource('kamar', KamarController::class)->middleware('checkRole:admin');
 Route::resource('rawatinap', RawatInapController::class)->middleware('checkRole:dokter,admin');
 Route::post('rawatinap/verif/{id}', [RawatInapController::class, 'verif'])->middleware('checkRole:admin');
 Route::resource('kunjungan', KunjunganController::class)->middleware('checkRole:dokter,admin');

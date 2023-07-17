@@ -20,13 +20,15 @@ class RekamMedisController extends Controller
      */
     public function index()
     {
+        $dokter = Dokter::where('user_id', Auth::user()->id)->first();
+
         $rekam_medis = RekamMedis::with('rekam_medis_pasien', 'rekam_medis_dokter')
         ->whereIn('id', function ($query) {
             $query->selectRaw('MAX(id)')
                 ->from('rekam_medis')
                 ->groupBy('pasien_id');
         })
-        ->where('dokter_id', Auth::user()->id)
+        ->where('dokter_id', $dokter->id)
         ->get();
 
         $data = [
@@ -65,8 +67,10 @@ class RekamMedisController extends Controller
     public function store(RekamMedisRequest $request)
     {
         // dd($request->all());
+        $dokter = Dokter::where('user_id', Auth::user()->id)->first();
+
         $validatedData = $request->all();
-        $validatedData['dokter_id'] =  Auth::user()->id;
+        $validatedData['dokter_id'] = $dokter->id;
         $validatedData['obat'] = implode(", ", $request->obat);
         RekamMedis::create($validatedData);
         return redirect()->route('rekam-medis.index');

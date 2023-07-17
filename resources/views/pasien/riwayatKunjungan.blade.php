@@ -78,7 +78,7 @@
                 </td>
                 @else
                 <td>
-                    <span class="badge badge-success">Selesai Terbayar</span>
+                    <span class="badge badge-success">Selesai</span>
                 </td>
                 @endif
               </tr>

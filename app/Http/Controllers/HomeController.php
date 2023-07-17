@@ -6,7 +6,8 @@ use App\Models\Dokter;
 use App\Models\Obat;
 use App\Models\Pasien;
 use App\Models\Perjanjian;
-use App\Models\kunjungan;
+use App\Models\Kunjungan;
+use App\Models\RawatInap;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -29,16 +30,20 @@ class HomeController extends Controller
    */
   public function index()
   {
-    $pasien = Pasien::all()->collect()->count();
-    $dokter = Dokter::all()->collect()->count();
-    $obat =  Obat::all()->collect()->count();
+    $AllPasien = Pasien::all()->collect()->count();
+    $AllDokter = Dokter::all()->collect()->count();
+    $AllObat = Obat::all()->collect()->count();
+    $AllKunjungan = Kunjungan::all()->collect()->count();
+    $AllRawatInap = RawatInap::all()->collect()->count();
     $perjanjian = Perjanjian::where('nama_dokter', Auth::user()->name)->get();
     $checkPasien = Pasien::where('user_id', Auth::user()->id)->count();
-    $kunjungan = kunjungan::where('user_id', Auth::user()->id)->count();
+    $kunjungan = Kunjungan::where('user_id', Auth::user()->id)->count();
     $data = [
-      'pasien' => $pasien,
-      'dokter' => $dokter,
-      'obat' => $obat,
+      'AllPasien' => $AllPasien,
+      'AllDokter' => $AllDokter,
+      'AllObat' => $AllObat,
+      'AllKunjungan' => $AllKunjungan,
+      'AllRawatInap' => $AllRawatInap,
       'perjanjians' => $perjanjian,
       'checkPasien' => $checkPasien,
       'kunjungan' => $kunjungan

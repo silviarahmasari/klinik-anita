@@ -80,7 +80,13 @@ class AdminPasienController extends Controller
      */
     public function show($id)
     {
-        //
+        $pasien = Pasien::FindOrFail($id);
+
+        $data = [
+            'pasien' => $pasien
+        ];
+
+        return view('admin.pasien.show', $data);
     }
 
     /**

@@ -52,6 +52,8 @@
                 <th>Kamar</th>
                 <th>Check In</th>
                 <th>Check Out</th>
+                <th>Nominal</th>
+                <th>Metode Pembayaran</th>
                 <th>Pembayaran</th>
               </tr>
             </thead>
@@ -60,15 +62,19 @@
                 <th>Kamar</th>
                 <th>check In</th>
                 <th>Check Out</th>
+                <th>Nominal</th>
+                <th>Metode Pembayaran</th>
                 <th>Pembayaran</th>
               </tr>
             </tfoot>
             <tbody>
               @foreach ($rawatInap as $rawatInap)
               <tr>
-                <td>{{ $rawatInap->nama_kamar }}</td>
+                <td>{{ $rawatInap->kamar }}</td>
                 <td>{{ $rawatInap->check_in }}</td>
                 <td>{{ $rawatInap->check_out }}</td>
+                <td>Rp{{ number_format($rawatInap->nominal) }}</td>
+                <td>{{ $rawatInap->metode_pembayaran }}</td>
                 @if($rawatInap->status_pembayaran == 'selesai terbayar')
                 <td>
                     <span class="badge badge-success">Selesai Terbayar</span>

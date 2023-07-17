@@ -18,6 +18,7 @@ class CreateSaranTable extends Migration
             $table->string('nama_pelanggan');
             $table->text('pesan');
             $table->unsignedBigInteger('user_id');
+            $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });

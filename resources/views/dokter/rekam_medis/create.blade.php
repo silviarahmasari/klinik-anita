@@ -68,7 +68,7 @@
                 </span>
                 @enderror
               </div>
-              <div class="form-group">
+              {{-- <div class="form-group">
                 <label for="dokter_id">Nama Dokter</label>
                 <select class="form-control @error('dokter_id') is-invalid @enderror" id="dokter_id" name="dokter_id">
                   <option value=""> Pilih salah satu</option>
@@ -83,7 +83,7 @@
                   <strong>{{ $message }}</strong>
                 </span>
                 @enderror
-              </div>
+              </div> --}}
               <div class="form-group">
                 <label for="obat">Obat</label>
                 <select class="js-example-basic-multiple custom-select multiselect-obat" id="obat" name="obat[]" multiple="multiple">
@@ -103,6 +103,22 @@
             </div>
             <div class="w-50 px-2">
               <div class="form-group">
+                <label for="pasien_id">Nama Pasien</label>
+                <select class="form-control @error('pasien_id') is-invalid @enderror" id="pasien_id" name="pasien_id">
+                  <option value=""> Pilih salah satu</option>
+                  @foreach ($pasiens as $pasien)
+                  <option value="{{ $pasien->id  }}">
+                    {{ $pasien->nama_pasien }}
+                  </option>
+                  @endforeach
+                </select>
+                @error('pasien_id')
+                <span class="invalid-feedback" role="alert">
+                  <strong>{{ $message }}</strong>
+                </span>
+                @enderror
+              </div>
+              <div class="form-group">
                 <label for="diagnosa">Diagnosa</label>
                 <textarea id="diagnosa" class="form-control @error('diagnosa') is-invalid @enderror"
                   id="diagnosa" name="diagnosa" value="{{ old('diagnosa') }}"></textarea>
@@ -117,22 +133,6 @@
                 <textarea id="terapi" class="form-control @error('terapi') is-invalid @enderror"
                   id="terapi" name="terapi" value="{{ old('terapi') }}"></textarea>
                 @error('terapi')
-                <span class="invalid-feedback" role="alert">
-                  <strong>{{ $message }}</strong>
-                </span>
-                @enderror
-              </div>
-              <div class="form-group">
-                <label for="pasien_id">Nama Pasien</label>
-                <select class="form-control @error('pasien_id') is-invalid @enderror" id="pasien_id" name="pasien_id">
-                  <option value=""> Pilih salah satu</option>
-                  @foreach ($pasiens as $pasien)
-                  <option value="{{ $pasien->id  }}">
-                    {{ $pasien->nama_pasien }}
-                  </option>
-                  @endforeach
-                </select>
-                @error('pasien_id')
                 <span class="invalid-feedback" role="alert">
                   <strong>{{ $message }}</strong>
                 </span>

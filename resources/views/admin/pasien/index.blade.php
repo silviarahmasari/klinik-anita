@@ -75,15 +75,11 @@
               <tr>
                 <td>{{ $item->nama_pasien }}</td>
                 <td>{{ $item->nik }}</td>
-                <td>{{ $item->dob }}</td>
+                <td>{{ $item->tempat_lahir }}, {{ \Carbon\Carbon::parse($item->tanggal_lahir)->format('d/m/Y') }}</td>
                 <td>{{ $item->gender }}</td>
                 <td>{{ $item->alamat_pasien }}</td>
                 <td>
-                    {{-- <span>
-                        <a href="{{ route('admin-pasien.detail', $item->id) }}" class="btn btn-success">
-                          Detail
-                        </a>
-                    </span> --}}
+                    <span><a href="{{ route('admin-pasien.show', $item->id) }}" class="btn btn-info">Detail</a></span>
                     <span><a href="{{ route('admin-pasien.edit', $item->id) }}" class="btn btn-warning">Edit</a></span>
                     <form action="{{ route('admin-pasien.destroy', $item->id) }}" method="post">
                         @method('delete')

@@ -173,7 +173,7 @@
           </div>
         </div>
       </li>
-      <li class="nav-item">
+      {{-- <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
           aria-expanded="true" aria-controls="collapseUtilities">
           <i class="fas fa-users"></i> <span>Pasien</span>
@@ -184,7 +184,7 @@
             <a class="collapse-item" href="{{ route('pasien.index') }}">Riwayat Berobat</a>
           </div>
         </div>
-      </li>
+      </li> --}}
       @endif
 
       @if (Auth::user()->role == 'admin')
