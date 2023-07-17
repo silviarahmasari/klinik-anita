@@ -38,6 +38,9 @@
     <!-- Page Heading -->
     <h1 class="h3 mb-3 font-weight-bold text-gray-800">Rekam Medis</h1>
     <!-- DataTales Example -->
+    @if(Auth::user()->isNewPassword == 0 && Auth::user()->role == 'dokter')
+      <span style="color: #F23E3E">Ubah password Anda terlebih dahulu</span>
+    @else
     <div class="card shadow mb-4">
       <div class="card-header py-3">
         <h5 class="font-weight-bold text-primary">Daftar Rekam Medis
@@ -99,6 +102,7 @@
         </div>
       </div>
     </div>
+    @endif
   </div>
   <!-- /.container-fluid -->
 </div>

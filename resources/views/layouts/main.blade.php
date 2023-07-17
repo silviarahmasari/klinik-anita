@@ -49,9 +49,21 @@
       @if (Auth::user()->role == 'dokter')
       <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#dataProfile"
+          aria-expanded="true" aria-controls="collapseUtilities">
+          <i class="fas fa-user-injured"></i> <span>Data Profile</span>
+        </a>
+        <div id="dataProfile" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Action</h6>
+            <a class="collapse-item" href="{{ route('dokter-profile.edit', Auth::user()->id) }}">Profile</a>
+          </div>
+        </div>
+      </li>
+      <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseRekamMedis" aria-expanded="true"
           aria-controls="collapseRekamMedis">
-          <i class="fas fa-user-injured"></i>
+          <i class="fas fa-file-invoice"></i>
           <span>Pengelolaan Rekam Medis</span>
         </a>
         <div id="collapseRekamMedis" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
@@ -66,7 +78,7 @@
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayanan" aria-expanded="true"
           aria-controls="collapseLayanan">
-          <i class="fas fa-user-injured"></i>
+          <i class="fas fa-network-wired"></i>
           <span>Daftar Layanan</span>
         </a>
         <div id="collapseLayanan" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
@@ -82,7 +94,7 @@
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePasien" aria-expanded="true"
           aria-controls="collapsePasien">
-          <i class="fas fa-user-injured"></i>
+          <i class="fas fa-fw fa-users"></i>
           <span>Daftar Pasien</span>
         </a>
         <div id="collapsePasien" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
@@ -180,7 +192,7 @@
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
           aria-controls="collapseTwo">
-          <i class="fas fa-fw fas fa-user-md"></i></fas>
+          <i class="fas fa-fw fa-users"></i></fas>
           <span>Pengelolaan pengguna</span>
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
@@ -195,7 +207,7 @@
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
           aria-expanded="true" aria-controls="collapseUtilities">
-          <i class="fas fa-fw fa-users"></i>
+          <i class="fas fa-network-wired"></i>
           <span>Pengelolaan Layanan</span>
         </a>
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
