@@ -38,18 +38,21 @@ class AdminDokterController extends Controller
 
   /**
    * Store a newly created resource in storage.
-   *
+   * $2y$10$dMbwrAQESL8LGgMh5N6dtuJozEbibL1O0jrE9tOvE8s2kIsMOu7lC
    * @param  \Illuminate\Http\Request  $request
    * @return \Illuminate\Http\Response
    */
   public function store(DokterRequest  $reqDokter, UserRequest $reqUser)
   {
-    
+    // dd($reqUser->all());
+    // $validatedDataUser = new User;
     $validatedDataUser = $reqUser->all();
-    $validatedDataUser['role'] = "dokter";
-    $validatedDataUser['isNewPassword'] = 0;
+    $validatedDataUser['role'] = $reqUser->role;
+    $validatedDataUser['isNewPassword'] = $reqUser->isNewPassword;
     $validatedDataUser['password'] =  Hash::make($reqUser->name);
+    // dd($validatedDataUser);
     $user = User::create($validatedDataUser);
+    // $validatedDataUser->save();
 
     $validatedDataDokter = $reqDokter->all();
     $validatedDataDokter['user_id'] =  $user->id;

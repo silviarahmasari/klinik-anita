@@ -45,7 +45,6 @@
           <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
             <thead>
               <tr>
-                <th>No. RM</th>
                 <th>Tanggal Kunjungan</th>
                 <th>Nama Lengkap</th>
                 <th>No. Antrian</th>
@@ -57,7 +56,6 @@
             </thead>
             <tfoot>
               <tr>
-                <th>No. RM</th>
                 <th>Tanggal Kunjungan</th>
                 <th>Nama Lengkap</th>
                 <th>No. Antrian</th>
@@ -70,7 +68,6 @@
             <tbody>
               @foreach ($kunjungan as $item)
               <tr>
-                <td>{{ $item->no_rm }}</td>
                 <td>{{ $item->tgl_kunjungan }}</td>
                 <td>{{ $item->nama_lengkap }}</td>
                 <td>{{ $item->no_antrian }}</td>
