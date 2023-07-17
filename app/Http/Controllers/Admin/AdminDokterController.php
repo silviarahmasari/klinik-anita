@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Models\Dokter;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 class AdminDokterController extends Controller
 {
@@ -97,6 +98,10 @@ class AdminDokterController extends Controller
   {
     $validatedData = $request->all();
     $admin_dokter->update($validatedData);
+
+    if (Auth::user()->role == 'dokter') {
+      return redirect()->back();
+    }
     return redirect()->route('admin-dokter.index');
   }
 

@@ -73,9 +73,9 @@
                 <td>{{ $item->no_antrian }}</td>
                 <td>{{ $item->keluhan }}</td>
                 <td>{{ $item->no_telp }}</td>
-                <td>{{ $item->status_pembayaran }}</td>
+                <td>@if($item->status_pembayaran === 0) Belum Selesai @else Selesai @endif</td>
                 <td>
-                    <span><a href="" class="btn btn-warning">Verify</a></span>
+                    <span><a href="" class="btn btn-warning">Verifikasi</a></span>
                     <form action="" method="post">
                         @method('delete')
                         @csrf

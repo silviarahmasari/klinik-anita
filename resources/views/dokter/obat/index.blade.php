@@ -40,6 +40,9 @@
   <div class="container-fluid">
     <!-- Page Heading -->
     <h1 class="h3 mb-3 text-gray-800">Obat</h1>
+    @if(Auth::user()->isNewPassword == 0 && Auth::user()->role == 'dokter')
+      <span style="color: #F23E3E">Ubah password Anda terlebih dahulu</span>
+    @else
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
       <div class="card-header py-3">
@@ -75,6 +78,7 @@
         </div>
       </div>
     </div>
+    @endif
   </div>
   <!-- /.container-fluid -->
 </div>

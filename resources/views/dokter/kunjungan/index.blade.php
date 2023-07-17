@@ -38,6 +38,9 @@
   <div class="container-fluid">
     <!-- Page Heading -->
     <h1 class="h3 mb-3 text-gray-800 font-weight-bold">Daftar Kunjungan</h1>
+    @if(Auth::user()->isNewPassword == 0 && Auth::user()->role == 'dokter')
+      <span style="color: #F23E3E">Ubah password Anda terlebih dahulu</span>
+    @else
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
       <div class="card-body">
@@ -45,7 +48,6 @@
           <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
             <thead>
               <tr>
-                <th>No. RM</th>
                 <th>Tanggal Kunjungan</th>
                 <th>Nama Lengkap</th>
                 <th>No. Antrian</th>
@@ -56,7 +58,6 @@
             </thead>
             <tfoot>
               <tr>
-                <th>No. RM</th>
                 <th>Tanggal Kunjungan</th>
                 <th>Nama Lengkap</th>
                 <th>No. Antrian</th>
@@ -68,13 +69,12 @@
             <tbody>
               @foreach ($kunjungan as $item)
               <tr>
-                <td>{{ $item->no_rm }}</td>
                 <td>{{ $item->tgl_kunjungan }}</td>
                 <td>{{ $item->nama_lengkap }}</td>
                 <td>{{ $item->no_antrian }}</td>
                 <td>{{ $item->keluhan }}</td>
                 <td>{{ $item->no_telp }}</td>
-                <td>{{ $item->status_pembayaran }}</td>
+                <td>@if($item->status_pembayaran === 0) Belum Selesai @else Selesai @endif</td>
               </tr>
               @endforeach
             </tbody>
@@ -82,6 +82,7 @@
         </div>
       </div>
     </div>
+    @endif
   </div>
   <!-- /.container-fluid -->
 </div>
