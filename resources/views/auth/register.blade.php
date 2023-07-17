@@ -30,7 +30,10 @@
       <div class="card-body p-0">
         <!-- Nested Row within Card Body -->
         <div class="row">
-          <div class="col-lg-12">
+          <div class="col-lg-4">
+            <img src="assets/img/departments-3.jpg" style="width: 119%; height: 100%">
+          </div>
+          <div class="col-lg-8">
             <div class="p-5">
               <div class="text-center">
                 <h1 class="h4 text-gray-900 mb-4">Daftar Disini!</h1>
