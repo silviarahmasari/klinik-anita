@@ -43,6 +43,7 @@ Route::post('/profile-udpate/{id}', [PasienController::class, 'profileUpdate'])-
 Route::get('/kunjungan-index', [PasienController::class, 'kunjungan'])->name('pasien.kunjungan')->middleware('checkRole:admin,pasien');
 Route::get('/kunjungan-ambil-antrian', [PasienController::class, 'ambilAntrian'])->name('pasien.ambilAntrian')->middleware('checkRole:admin,pasien');
 Route::post('/kunjungan-insert', [PasienController::class, 'kunjunganInsert'])->name('pasien.kunjunganInsert')->middleware('checkRole:admin,pasien');
+Route::get('/cetak-antrian', [PasienController::class, 'cetakRiwayatKunjungan'])->name('pasien.cetakAntrian')->middleware('checkRole:admin,pasien');
 Route::get('/riwayat-kunjungan', [PasienController::class, 'riwayatKunjungan'])->name('pasien.riwayatKunjungan')->middleware('checkRole:admin,pasien');
 Route::get('/riwayat-rawat-inap', [PasienController::class, 'riwayatRawatInap'])->name('pasien.riwayatRawatInap')->middleware('checkRole:admin,pasien');
 Route::get('/pasien-rekam-medis', [PasienController::class, 'rekamMedis'])->name('pasien.rekamMedis')->middleware('checkRole:admin,pasien');

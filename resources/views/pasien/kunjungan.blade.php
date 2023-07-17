@@ -63,7 +63,6 @@
 		@foreach($kunjungan as $kunjungan)
     <div class="card shadow mb-4">
 			<div class="card-body">
-				<a href="" class="btn btn-success float-right">Cetak</a>
 				<div class="row">
 					<div class="col-md-6">
 						<div class="mb-3 row">
