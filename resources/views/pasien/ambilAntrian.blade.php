@@ -55,7 +55,7 @@
         Form Data Kunjungan
       </div>
 			<div class="card-body">
-				<span>Silahkan mengisi data kunjungan terlebih dahulu untuk mendapatkan nomor antrian</span>
+				<span><strong>Silahkan mengisi data kunjungan terlebih dahulu untuk mendapatkan nomor antrian</strong></span>
 				<form action="{{ route('pasien.kunjunganInsert') }}" method="post">
 					@csrf
 					<div class="card-body">

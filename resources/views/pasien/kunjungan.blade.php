@@ -51,6 +51,11 @@
   <div class="container-fluid">
     <!-- Page Heading -->
     <h1 class="h3 mb-3 text-gray-800">Daftar Kunjungan</h1>
+		@if(session('error'))
+		<div class="alert alert-danger">
+			{{session('error')}}
+		</div>
+		@endif
     <!-- DataTales Example -->
 		@if($checkPasien == 0)
 		<span style="color: #F23E3E">Silahkan lengkapi data diri anda terlebih dahulu</span>
@@ -97,7 +102,14 @@
 						<div class="mb-3 row">
 							<label for="no_antrian" class="col-sm-4 col-form-label">Nomor Antrian Anda</label>
 							<div class="col-sm-8">
-								<h5>: {{$kunjungan->no_antrian}}</h5>
+								<h5>: {{$kunjungan->no_antrian}}, estimasi waktu pemeriksaan anda pada {{$kunjungan->estimasi_waktu_awal}} - {{$kunjungan->estimasi_waktu_akhir}}</h5>
+							</div>
+						</div>
+
+						<div class="mb-3 row">
+							<label for="triase_tujuan" class="col-sm-4 col-form-label">Triase Yang dituju</label>
+							<div class="col-sm-8">
+								<h5>: {{ $kunjungan->triase_tujuan }}</h5>
 							</div>
 						</div>
 					</div>
