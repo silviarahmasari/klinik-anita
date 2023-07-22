@@ -528,7 +528,6 @@
               </div>
             </div><!-- End testimonial item -->
             @endforeach
-
           </div>
           <div class="swiper-pagination"></div>
         </div>
@@ -627,27 +626,53 @@
           <p>Mengumumkan informasi terbaru yang ada di Klinik Pratama Rawat Inap "Dokter Anita"</p>
         </div>
 
-        <div class="card-group">
         <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
-            <div class="swiper-wrapper">
-              @foreach ($pengumuman as $data)
-              <div class="swiper-slide">
-                <div class="testimonial-wrap">
-                  <div class="testimonial-item">
-                    <img src="{{ asset('/storage/gambar-pengumuman/' . $data->gambar) }}" class="testimonial-img" alt="">
-                    <h3>{{ $data->judul_pengumuman }}</h3>
-                    <p>
-                      {{ $data->deskripsi }}                  
-                    </p>
+          <div class="swiper-wrapper">
+            @foreach ($pengumuman as $data)
+            <div class="swiper-slide">
+              <div class="testimonial-wrap">
+                <div class="testimonial-item">
+                  <div class="card" style="width: 500px; border:none;">
+                    <img src="{{ asset('/storage/gambar-pengumuman/' . $data->gambar) }}" class="testimonial-img" alt="" style="width: 500px; height: auto;">
+                    <div class="card-body text-center">
+                      <h5 class="card-title">{{ $data->judul_pengumuman }}</h5>
+                      <button id="myBtn" class="btn btn-primary" onclick="openModal(<?php echo $data->id; ?>)">Detail</button>
+                    </div>
                   </div>
                 </div>
               </div>
-              @endforeach
             </div>
+            @endforeach
+          </div>
           <div class="swiper-pagination"></div>
         </div>
-        </div>
       </div>
+
+      <!-- The Modal -->
+      @foreach ($pengumuman as $data)
+      <div id="myModal{{$data->id}}" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+          <div class="text-right">
+            <button class="modal-close{{$data->id}} btn" style="float:right;" onclick="closeModal(<?php echo $data->id; ?>)"><i class="fas fa-times"></i></button>
+          </div>
+          <div class="modal-header">
+            <h2>{{ $data->judul_pengumuman }}</h2>
+          </div>
+          <div class="modal-body">
+            <img src="{{ asset('/storage/gambar-pengumuman/' . $data->gambar) }}" class="testimonial-img" alt="" style="width: 500px; height: auto;">
+            <br><br><p>{{ $data->deskripsi }}</p>
+          </div>
+          {{-- <div class="modal-footer">
+            <h3>Modal Footer</h3>
+          </div> --}}
+        </div>
+
+      </div>
+      @endforeach
+
+
     </section>
     <!-- End Pengumuman Section -->
 
@@ -774,6 +799,41 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+
+  <script>
+    function openModal(index) {
+      // Get the modal
+      var modal = document.getElementById("myModal"+index);
+      
+      // Get the button that opens the modal
+      // var btn = document.getElementById("myBtn"+index);
+      
+      // Get the <span> element that closes the modal
+      // var span = document.getElementsByClassName("modal-close"+index)[0];
+      
+      // When the user clicks the button, open the modal 
+      // btn.onclick = function() {
+        modal.style.display = "block";
+      // }
+      
+      // When the user clicks on <span> (x), close the modal
+      // span.onclick = function() {
+      //   modal.style.display = "none";
+      // }
+      
+      // When the user clicks anywhere outside of the modal, close it
+      // window.onclick = function(event) {
+      //   if (event.target == modal) {
+      //     modal.style.display = "none";
+      //   }
+      // }
+    }
+
+    function closeModal(index) {
+      var modal = document.getElementById("myModal"+index);
+      modal.style.display = "none";
+    }
+  </script>
 
 </body>
 

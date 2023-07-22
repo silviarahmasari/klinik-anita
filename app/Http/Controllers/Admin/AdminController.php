@@ -84,9 +84,10 @@ class AdminController extends Controller
   public function update(Request $request, $id)
   {
     $validatedData = $request->all();
-    $user = User::find($id);
-    $validatedData['role'] = $request->role;
-    $user->update($validatedData);
+    $user = User::findOrFail($id);
+    $user->fill($validatedData);
+    $user->save();
+    
     return redirect()->route('admin.index');
   }
 

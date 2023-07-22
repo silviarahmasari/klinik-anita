@@ -20,6 +20,22 @@ class RekamMedisController extends Controller
      */
     public function index()
     {
+        if(Auth::user()->role == 'admin') {
+            $rekam_medis = RekamMedis::with('rekam_medis_pasien', 'rekam_medis_dokter')
+            ->whereIn('id', function ($query) {
+                $query->selectRaw('MAX(id)')
+                    ->from('rekam_medis')
+                    ->groupBy('pasien_id');
+            })
+            ->get();
+
+            $data = [
+                'rekam_medis_lists' => $rekam_medis
+            ];
+
+            return view('admin.rekam_medis.index', $data);
+        }
+
         $dokter = Dokter::where('user_id', Auth::user()->id)->first();
 
         $rekam_medis = RekamMedis::with('rekam_medis_pasien', 'rekam_medis_dokter')
@@ -91,6 +107,10 @@ class RekamMedisController extends Controller
             'rekam_medis_pasien' => $rekam_medis
         ];
 
+        if(Auth::user()->role == 'admin') {
+            return view('admin.rekam_medis.show', $data);
+        }
+
         return view('dokter.rekam_medis.show', $data);
     }
 
@@ -103,9 +123,9 @@ class RekamMedisController extends Controller
     public function edit(RekamMedis $rekam_medis)
     {
         $rekam_medis = RekamMedis::with('rekam_medis_pasien', 'rekam_medis_dokter')
-        ->where('dokter_id', Auth::user()->id)
+        // ->where('dokter_id', Auth::user()->id)
         ->first();
-        dd(Auth::user()->id);
+        // dd($rekam_medis->obat);
         $rekam_medis_obat = explode(", ", $rekam_medis->obat);
 
         $pasien = Pasien::all();

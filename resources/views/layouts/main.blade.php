@@ -219,6 +219,19 @@
         </div>
       </li>
       <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#adminRekamMedis"
+          aria-expanded="true" aria-controls="adminRekamMedis">
+          <i class="fas fa-folder-open"></i>
+          <span>Daftar Rekam Medis</span>
+        </a>
+        <div id="adminRekamMedis" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Action</h6>
+            <a class="collapse-item" href="{{ route('rekam-medis.index') }}">Data Rekam Medis</a>
+          </div>
+        </div>
+      </li>
+      <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true"
           aria-controls="collapsePages">
           <i class="fas fa-tablets"></i>

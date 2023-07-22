@@ -59,8 +59,7 @@
           <div class="form-group">
             <label for="deskripsi">Deskripsi</label>
             <textarea type="text" id="deskripsi" class="form-control"
-              id="deskripsi" name="deskripsi" placeholder="Deskripsi">
-            </textarea>
+              id="deskripsi" name="deskripsi" placeholder="Deskripsi"></textarea>
           </div>
           <div class="form-group">
             <label for="tanggal">Tanggal</label>

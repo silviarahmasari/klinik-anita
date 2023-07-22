@@ -5,8 +5,14 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Pasien;
+use App\Models\Dokter;
+use App\Models\RekamMedis;
+use App\Models\Kunjungan;
+use App\Models\RawatInap;
+use App\Models\Obat;
 use App\Models\User;
 use App\Models\MetodeBayar;
+use App\Models\KritikSaran;
 use App\Http\Requests\Pasien\PasienRequest;
 
 class AdminPasienController extends Controller
@@ -97,7 +103,12 @@ class AdminPasienController extends Controller
      */
     public function edit($id)
     {
-        //
+        $pasien = Pasien::FindOrFail($id);
+        $data = [
+        'pasien' => $pasien,
+        ];
+
+    return view('admin.pasien.edit', $data);
     }
 
     /**
@@ -109,7 +120,14 @@ class AdminPasienController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validatedData = $request->all();
+        // $validatedData['tgl_datang'] = $pasien->tgl_datang;
+        // return $validatedData;
+        $pasien = Pasien::FindOrFail($id);
+        $pasien->fill($validatedData);
+        $pasien->save();
+
+        return redirect()->route('admin-pasien.index');
     }
 
     /**
@@ -120,6 +138,29 @@ class AdminPasienController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $pasien = Pasien::FindOrFail($id);
+        $user = User::FindOrFail($pasien->user_id);
+        $rekam_medis = RekamMedis::where('pasien_id', $pasien->id)->get();
+        $kunjungan = Kunjungan::where('user_id', $user->id)->get();
+        $rawat_inap = RawatInap::where('user_id', $user->id)->get();
+        $kritik_saran = KritikSaran::where('user_id', $user->id)->get();
+
+        foreach ($kritik_saran as $item) {
+            $item->delete();
+        }
+        foreach ($rekam_medis as $item) {
+            $item->delete();
+        }
+        foreach ($kunjungan as $item) {
+            $item->delete();
+        }
+        foreach ($rawat_inap as $item) {
+            $item->delete();
+        }
+        $user->delete();
+        $pasien->delete();
+
+
+        return redirect()->route('admin-pasien.index');
     }
 }
