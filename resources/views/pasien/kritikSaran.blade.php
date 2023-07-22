@@ -2,19 +2,6 @@
 
 @section('content')
 <style>
-	.input{
-    display: grid;
-    grid-template-columns: 200px 1350px;
-  }
-	input{
-		margin-bottom: 10px
-	}
-	select{
-		margin-bottom: 10px
-	}
-	textarea{
-		margin-bottom: 10px
-	}
   input::-webkit-outer-spin-button,
   input::-webkit-inner-spin-button {
   -webkit-appearance: none;
@@ -73,14 +60,20 @@
 					@csrf
 					<div class="card-body">
 						<div class="row">
-							<div class="col-md-4">
-								<div class="input">
-									<label for="nama_pelanggan">Nama Anda</label>
-									<input type="text" class="form-control" name="nama_pelanggan" id="nama_pelanggan" value="{{ Auth::user()->name }}" readonly>
+							<div class="col-md-12">
+                <div class="mb-3 row">
+                  <label for="nama_pelanggan" class="col-sm-2 col-form-label">Nama Anda</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" name="nama_pelanggan" id="nama_pelanggan" value="{{ Auth::user()->name }}" readonly>
+                  </div>
+                </div>
 
-									<label for="pesan">Pesan Anda</label>
-									<textarea class="form-control" name="pesan" id="pesan" rows="10"></textarea>
-								</div>
+                <div class="mb-3 row">
+                  <label for="pesan" class="col-sm-2 col-form-label">Pesan Anda</label>
+                  <div class="col-sm-10">
+                    <textarea class="form-control" name="pesan" id="pesan" rows="10"></textarea>
+                  </div>
+                </div>
 							</div>
 						</div>
 					</div>

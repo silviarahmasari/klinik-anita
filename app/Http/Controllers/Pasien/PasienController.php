@@ -209,11 +209,27 @@ class PasienController extends Controller
 
   public function kunjunganInsert(KunjunganRequest $request) {
     $validatedData = $request->all();
-    $kunjungan = kunjungan::where('tgl_kunjungan', $validatedData['tgl_kunjungan'])->count();
-    $validatedData['no_antrian'] = $kunjungan+1;
-    $validatedData['user_id'] = Auth::user()->id;
-    Kunjungan::create($validatedData);
-    return redirect()->route('pasien.kunjungan');
+    $jam = Carbon::now();
+    $jam->setTime(8, 0, 0);
+    $checkKunjungan = kunjungan::where('tgl_kunjungan', $validatedData['tgl_kunjungan'])->where('user_id', Auth::user()->id)->count();
+    if($checkKunjungan == 1) {
+      return redirect('kunjungan-index')->with('error', 'Gagal mengambil antrian, Anda sudah mengambil antrian untuk hari ini');
+    } else {
+      $kunjungan = kunjungan::where('tgl_kunjungan', $validatedData['tgl_kunjungan'])->count();
+      $validatedData['no_antrian'] = $kunjungan+1;
+      $validatedData['user_id'] = Auth::user()->id;
+      $jamAwal = $jam->addMinutes($kunjungan*30);
+      $validatedData['estimasi_waktu_awal'] = $jamAwal->format('H:i');
+      $jamAkhir = $jamAwal->addMinutes(30);
+      $validatedData['estimasi_waktu_akhir'] = $jamAkhir->format('H:i');
+      // dd($validatedData);
+      if($jamAwal == '17:00') {
+        return redirect('kunjungan-index')->with('error', 'Mohon maaf antrian untuk hari ini sudah penuh, silahkan mengambil antrian di lain hari');
+      } else {
+        Kunjungan::create($validatedData);
+        return redirect()->route('pasien.kunjungan');
+      }
+    }
   }
 
   public function riwayatKunjungan() {
